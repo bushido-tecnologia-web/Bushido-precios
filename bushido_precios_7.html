@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bushido Tecnología · Precios</title>
+<style>
+:root{--negro:#0D0D0D;--rojo:#C0111A;--rojo-osc:#8B0000;--blanco:#FFFFFF;--gris-bg:#F5F5F5;--gris-borde:#CCCCCC;--gris-txt:#555555;--oro:#B8860B;--oro-claro:#FDF3DC;--verde:#1A6B1A;--fuente:'Segoe UI',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--fuente);background:var(--gris-bg);color:var(--negro);min-height:100vh}
+nav{background:var(--negro);display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:56px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+.nav-brand{color:var(--blanco);font-size:18px;font-weight:700;letter-spacing:.5px}
+.nav-brand span{color:var(--rojo)}
+.nav-actions{display:flex;gap:8px}
+.btn{padding:7px 14px;border:none;border-radius:4px;cursor:pointer;font-size:13px;font-weight:600;transition:opacity .15s}
+.btn:hover{opacity:.85}
+.btn-rojo{background:var(--rojo);color:var(--blanco)}
+.btn-negro{background:#333;color:var(--blanco)}
+.btn-gris{background:#e5e5e5;color:var(--negro)}
+.btn-sm{padding:4px 10px;font-size:12px;border-radius:3px}
+.app{display:flex;height:calc(100vh - 56px)}
+.sidebar{width:210px;min-width:210px;background:var(--negro);display:flex;flex-direction:column;overflow-y:auto;border-right:1px solid #222}
+.sidebar-section{padding:12px 16px 6px;font-size:10px;color:#666;text-transform:uppercase;letter-spacing:1px}
+.sidebar-item{padding:10px 16px;color:#aaa;cursor:pointer;font-size:13px;border-left:3px solid transparent;transition:all .15s;display:flex;align-items:center;gap:8px}
+.sidebar-item:hover{background:#1a1a1a;color:var(--blanco)}
+.sidebar-item.active{background:#1a1a1a;color:var(--blanco);border-left-color:var(--rojo)}
+.sidebar-badge{margin-left:auto;background:#333;color:#888;font-size:10px;padding:1px 6px;border-radius:10px}
+.sidebar-item.active .sidebar-badge{background:var(--rojo);color:var(--blanco)}
+.sidebar-divider{height:1px;background:#222;margin:8px 0}
+.sidebar-config{padding:14px 16px;margin-top:auto;border-top:1px solid #222}
+.config-row{display:flex;flex-direction:column;gap:3px;margin-bottom:9px}
+.config-label{font-size:10px;color:#666}
+.config-input{background:#1a1a1a;border:1px solid #333;color:var(--blanco);padding:5px 8px;border-radius:3px;font-size:13px;width:100%}
+.config-input:focus{outline:none;border-color:var(--rojo)}
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.toolbar{background:var(--blanco);border-bottom:1px solid var(--gris-borde);padding:10px 16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.search-wrap{position:relative;flex:1;min-width:160px;max-width:320px}
+.search-wrap input{width:100%;padding:7px 10px 7px 32px;border:1px solid var(--gris-borde);border-radius:4px;font-size:13px;background:var(--gris-bg)}
+.search-wrap input:focus{outline:none;border-color:var(--rojo)}
+.search-icon{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:#aaa;font-size:14px}
+.vista-toggle{display:flex;border:1px solid var(--gris-borde);border-radius:4px;overflow:hidden}
+.vista-btn{padding:6px 12px;font-size:12px;font-weight:600;cursor:pointer;border:none;background:var(--blanco);color:var(--gris-txt)}
+.vista-btn.active{background:var(--negro);color:var(--blanco)}
+.count-badge{font-size:12px;color:var(--gris-txt);white-space:nowrap}
+.table-wrap{flex:1;overflow-y:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead th{background:var(--negro);color:var(--blanco);padding:10px 12px;text-align:left;font-size:11px;font-weight:600;position:sticky;top:0;z-index:10;white-space:nowrap}
+thead th.right{text-align:right}
+thead th.center{text-align:center}
+tbody tr{border-bottom:1px solid var(--gris-borde);transition:background .1s}
+tbody tr:hover{background:#f0f0f0}
+tbody tr.alt{background:var(--gris-bg)}
+tbody tr.alt:hover{background:#e8e8e8}
+tbody tr.sec-row{background:var(--rojo)}
+tbody tr.sec-row td{color:var(--blanco);font-weight:700;font-size:12px;padding:7px 12px}
+tbody tr.ag-row{background:var(--oro-claro)!important}
+tbody tr.ag-row:hover{background:#f5e9bb!important}
+tbody tr.ss-row{opacity:.5}
+td{padding:8px 12px;vertical-align:middle}
+td.num{color:var(--gris-txt);font-size:11px;width:36px}
+td.nombre{font-weight:600;max-width:300px}
+td.costo{color:#888;font-size:12px;text-align:right;white-space:nowrap}
+td.venta{color:var(--rojo);font-weight:700;text-align:right;white-space:nowrap}
+td.ars{font-weight:700;text-align:right;white-space:nowrap;font-size:14px}
+td.gar{color:var(--gris-txt);font-size:11px;text-align:center}
+td.acc{text-align:center;white-space:nowrap}
+.tag-ag{background:var(--oro);color:var(--blanco);font-size:9px;padding:1px 5px;border-radius:3px;font-weight:700;margin-right:3px}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;align-items:center;justify-content:center}
+.overlay.show{display:flex}
+.modal{background:var(--blanco);border-radius:8px;width:480px;max-width:95vw;max-height:90vh;overflow-y:auto}
+.modal-header{background:var(--negro);color:var(--blanco);padding:16px 20px;display:flex;justify-content:space-between;align-items:center;border-radius:8px 8px 0 0}
+.modal-header h3{font-size:16px}
+.modal-close{background:none;border:none;color:#aaa;font-size:20px;cursor:pointer;line-height:1}
+.modal-close:hover{color:var(--blanco)}
+.modal-body{padding:20px}
+.form-row{margin-bottom:13px}
+.form-row label{display:block;font-size:11px;font-weight:600;color:var(--gris-txt);margin-bottom:4px}
+.form-row input,.form-row select{width:100%;padding:8px 10px;border:1px solid var(--gris-borde);border-radius:4px;font-size:14px}
+.form-row input:focus,.form-row select:focus{outline:none;border-color:var(--rojo)}
+.form-preview{background:var(--gris-bg);border-radius:6px;padding:12px;margin-bottom:13px;display:flex;gap:16px;justify-content:space-around}
+.prev-item{text-align:center}
+.prev-item .val{font-size:18px;font-weight:700;color:var(--rojo)}
+.prev-item .lbl{font-size:10px;color:var(--gris-txt)}
+.form-check{display:flex;align-items:center;gap:8px;font-size:13px;margin-bottom:9px;cursor:pointer}
+.form-check input{width:auto;cursor:pointer}
+.modal-footer{padding:14px 20px;border-top:1px solid var(--gris-borde);display:flex;justify-content:flex-end;gap:8px}
+.cli-wrap{display:none;flex:1;overflow-y:auto;padding:20px;background:#e8e8e8}
+.cli-wrap.show{display:block}
+.cli-card{background:var(--blanco);max-width:900px;margin:0 auto;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+.cli-header{background:var(--negro);color:var(--blanco);padding:20px 24px;display:flex;justify-content:space-between;align-items:center}
+.cli-header h1{font-size:24px;font-weight:700}
+.cli-header .sub{color:var(--rojo);font-size:12px;margin-top:4px}
+.cli-header .meta{text-align:right;font-size:11px;color:#aaa;line-height:1.7}
+.cli-line{height:3px;background:var(--rojo)}
+.cli-sec{background:var(--rojo);color:var(--blanco);font-weight:700;font-size:12px;padding:7px 18px}
+.cli-tbl{width:100%;border-collapse:collapse;font-size:12px}
+.cli-tbl th{background:var(--negro);color:var(--blanco);padding:7px 14px;text-align:left;font-size:10px}
+.cli-tbl th.r{text-align:right}
+.cli-tbl td{padding:7px 14px;border-bottom:1px solid #eee}
+.cli-tbl tr:nth-child(even) td{background:var(--gris-bg)}
+.cli-tbl td.u{color:var(--rojo);font-weight:700;text-align:right}
+.cli-tbl td.a{font-weight:700;text-align:right}
+.cli-tbl td.g{color:var(--gris-txt);font-size:10px;text-align:center}
+.cli-foot{background:var(--negro);color:#777;font-size:10px;padding:10px 18px;text-align:center}
+.toast{position:fixed;bottom:20px;right:20px;background:var(--negro);color:var(--blanco);padding:10px 18px;border-radius:6px;font-size:13px;z-index:999;opacity:0;transition:opacity .3s;pointer-events:none;border-left:3px solid var(--rojo)}
+.toast.show{opacity:1}
+.loading-overlay{position:fixed;inset:0;background:var(--negro);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+.loading-overlay.hide{display:none}
+.loading-title{color:var(--blanco);font-size:22px;font-weight:700;letter-spacing:.5px}
+.loading-title span{color:var(--rojo)}
+.loading-sub{color:#666;font-size:13px}
+.loading-spinner{width:40px;height:40px;border:3px solid #333;border-top-color:var(--rojo);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.sync-indicator{position:fixed;top:60px;right:12px;background:var(--negro);color:#aaa;font-size:11px;padding:4px 10px;border-radius:4px;border:1px solid #333;z-index:50;display:none}
+.sync-indicator.show{display:block}
+.sync-indicator.ok{color:#1a6b1a;border-color:#1a6b1a}
+.sync-indicator.err{color:var(--rojo);border-color:var(--rojo)}
+
+.nav-actions-mobile{display:none}
+@media(max-width:768px){.nav-actions-mobile{display:flex!important}}
+/* Stats */
+.stats-wrap{display:none;flex:1;overflow-y:auto;padding:20px;background:var(--gris-bg)}
+.stats-wrap.show{display:block}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:20px}
+.stat-card{background:var(--blanco);border-radius:8px;padding:16px;box-shadow:0 1px 4px rgba(0,0,0,.08);border-top:3px solid var(--rojo)}
+.stat-card .val{font-size:26px;font-weight:700;color:var(--negro);line-height:1}
+.stat-card .lbl{font-size:11px;color:var(--gris-txt);margin-top:4px}
+.stat-card .sub{font-size:10px;color:#aaa;margin-top:2px}
+.stats-table-wrap{background:var(--blanco);border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,.08);overflow:hidden;margin-bottom:16px}
+.stats-table-tit{background:var(--negro);color:var(--blanco);padding:10px 16px;font-size:13px;font-weight:700}
+.stats-tbl{width:100%;border-collapse:collapse;font-size:12px}
+.stats-tbl th{background:#f0f0f0;padding:8px 14px;text-align:left;font-size:11px;font-weight:600;color:var(--gris-txt)}
+.stats-tbl th.r{text-align:right}
+.stats-tbl td{padding:8px 14px;border-bottom:1px solid var(--gris-borde)}
+.stats-tbl td.r{text-align:right;font-weight:600}
+.bar-wrap{display:flex;align-items:center;gap:8px}
+.bar{height:8px;background:var(--rojo);border-radius:4px;min-width:2px;transition:width .3s}
+/* Historial */
+.hist-wrap{display:none;flex:1;overflow-y:auto;padding:20px;background:var(--gris-bg)}
+.hist-wrap.show{display:block}
+.hist-empty{text-align:center;padding:60px 20px;color:var(--gris-txt)}
+.hist-empty .ico{font-size:48px;margin-bottom:12px}
+.hist-grupo{margin-bottom:20px}
+.hist-fecha-hdr{font-size:11px;font-weight:700;color:var(--gris-txt);text-transform:uppercase;letter-spacing:.5px;padding:4px 0;margin-bottom:8px;border-bottom:1px solid var(--gris-borde)}
+.hist-item{background:var(--blanco);border-radius:6px;padding:10px 14px;margin-bottom:6px;display:flex;align-items:center;gap:10px;box-shadow:0 1px 3px rgba(0,0,0,.06);font-size:12px}
+.hist-ico{font-size:18px;width:24px;text-align:center}
+.hist-nom{flex:1;font-weight:600;color:var(--negro)}
+.hist-cat{font-size:10px;color:#aaa;font-weight:400}
+.hist-precios{text-align:right;white-space:nowrap}
+.hist-old{color:#aaa;text-decoration:line-through;font-size:11px}
+.hist-new-up{color:#c62828;font-weight:700}
+.hist-new-dn{color:#1a6b1a;font-weight:700}
+.hist-new-new{color:#1565c0;font-weight:700}
+.hist-tiempo{font-size:10px;color:#aaa;white-space:nowrap}
+.btn-clear-hist{font-size:11px;padding:4px 10px;background:none;border:1px solid #ddd;border-radius:3px;cursor:pointer;color:#aaa}
+.btn-clear-hist:hover{background:#ffeaea;color:var(--rojo);border-color:var(--rojo)}
+/* WA btn */
+.btn-wa{background:#25D366;color:white;border:none;border-radius:3px;padding:4px 8px;font-size:12px;cursor:pointer;transition:opacity .15s}
+.btn-wa:hover{opacity:.85}
+
+.upd-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:300;align-items:flex-start;justify-content:center;overflow-y:auto;padding:20px}
+.upd-overlay.show{display:flex}
+.upd-panel{background:#fff;border-radius:8px;width:860px;max-width:98vw;margin:auto}
+.upd-header{background:var(--negro);color:var(--blanco);padding:16px 22px;display:flex;justify-content:space-between;align-items:center;border-radius:8px 8px 0 0}
+.upd-header h2{font-size:17px;display:flex;align-items:center;gap:10px}
+.upd-body{padding:22px}
+.upd-steps{display:flex;gap:0;margin-bottom:20px;border-radius:4px;overflow:hidden;border:1px solid var(--gris-borde)}
+.upd-step{flex:1;padding:8px;text-align:center;font-size:12px;font-weight:600;color:#aaa;background:#fafafa;border-right:1px solid var(--gris-borde)}
+.upd-step:last-child{border-right:none}
+.upd-step.active{background:var(--negro);color:var(--blanco)}
+.upd-step.done{background:#1a6b1a;color:#fff}
+textarea.upd-ta{width:100%;height:260px;padding:12px;border:1px solid var(--gris-borde);border-radius:6px;font-size:12px;font-family:monospace;resize:vertical}
+textarea.upd-ta:focus{outline:none;border-color:var(--rojo)}
+.upd-hint{font-size:11px;color:#888;margin-top:6px}
+.diff-seccion{margin-bottom:18px}
+.diff-tit{font-size:13px;font-weight:700;padding:8px 12px;border-radius:4px;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.diff-tit.cambios{background:#e8f5e9;color:#1a6b1a}
+.diff-tit.nuevos{background:#e3f2fd;color:#1565c0}
+.diff-tit.dudosos{background:#fff8e1;color:#e65100}
+.diff-tit.desap{background:#fce4ec;color:#c62828}
+.diff-row{display:flex;align-items:center;gap:10px;padding:7px 10px;border:1px solid var(--gris-borde);border-radius:4px;margin-bottom:5px;font-size:12px;background:#fafafa}
+.diff-row:hover{background:#f0f0f0}
+.diff-nom{flex:1;font-weight:600;color:var(--negro)}
+.diff-old{color:#aaa;text-decoration:line-through;white-space:nowrap}
+.diff-new{color:var(--verde);font-weight:700;white-space:nowrap}
+.diff-sub{font-size:10px;color:#aaa;font-weight:400}
+.diff-chk{width:auto;cursor:pointer;accent-color:var(--rojo)}
+.diff-cat-sel{font-size:11px;padding:3px 6px;border:1px solid var(--gris-borde);border-radius:3px;color:var(--negro)}
+.diff-match-box{font-size:11px;color:#888;margin-top:3px}
+.diff-match-box b{color:var(--negro)}
+.diff-score{font-size:10px;background:#eee;padding:1px 5px;border-radius:3px;color:#666}
+.diff-radio{display:flex;gap:8px;flex-wrap:wrap}
+.diff-radio label{display:flex;align-items:center;gap:3px;font-size:11px;cursor:pointer}
+.upd-footer{padding:14px 22px;border-top:1px solid var(--gris-borde);display:flex;justify-content:space-between;align-items:center}
+.upd-resumen{font-size:12px;color:var(--gris-txt)}
+.sinstock-badge{font-size:10px;background:#fce4ec;color:#c62828;padding:1px 5px;border-radius:3px;font-weight:600}
+
+thead th.sortable{cursor:pointer;user-select:none}
+thead th.sortable:hover{background:#222}
+thead th.sort-asc::after{content:' ↑';color:var(--rojo)}
+thead th.sort-desc::after{content:' ↓';color:var(--rojo)}
+.sort-bar{display:flex;gap:6px;align-items:center}
+.sort-btn{padding:4px 10px;font-size:11px;border-radius:3px;border:1px solid var(--gris-borde);background:var(--blanco);cursor:pointer;color:var(--gris-txt);font-weight:600}
+.sort-btn:hover{background:var(--gris-bg)}
+.sort-btn.active{background:var(--negro);color:var(--blanco);border-color:var(--negro)}
+
+/* ── MOBILE ──────────────────────────────────────────────────────────────── */
+@media(max-width:768px){
+  /* Nav */
+  nav{padding:0 12px;height:52px}
+  .nav-brand{font-size:15px}
+  .nav-actions{display:none}
+
+  /* Hamburger */
+  .nav-hamburger{display:flex!important;align-items:center;justify-content:center;width:36px;height:36px;background:none;border:1px solid #444;border-radius:4px;cursor:pointer;color:#aaa;font-size:18px}
+
+  /* Sidebar como drawer */
+  .sidebar{position:fixed;left:-220px;top:52px;bottom:60px;z-index:150;transition:left .25s ease;width:210px!important;min-width:210px!important}
+  .sidebar.open{left:0;box-shadow:4px 0 20px rgba(0,0,0,.5)}
+  .sidebar-overlay{display:none;position:fixed;inset:0;top:52px;bottom:60px;background:rgba(0,0,0,.4);z-index:149}
+  .sidebar-overlay.show{display:block}
+
+  /* App layout */
+  .app{flex-direction:column;height:calc(100vh - 52px - 60px)}
+  .main{height:100%;overflow:hidden}
+
+  /* Toolbar */
+  .toolbar{padding:8px 10px;gap:6px;flex-wrap:nowrap;overflow-x:auto}
+  .search-wrap{min-width:120px}
+  .vista-toggle{display:none}
+  .sort-bar{display:none}
+  .count-badge{display:none}
+  #btn-pdf{display:none}
+
+  /* Tabla: ocultar columnas en mobile */
+  .col-costo{display:none}
+  .col-ars{display:none}
+  .col-gar{display:none}
+  thead th.hide-mob{display:none}
+  td.hide-mob{display:none}
+  td.nombre{max-width:180px;font-size:13px}
+  td.venta{font-size:13px}
+  td.num{display:none}
+  td.acc .btn{padding:5px 8px;font-size:13px}
+  .btn-wa{padding:6px 10px;font-size:14px}
+
+  /* Bottom nav */
+  .bottom-nav{display:flex!important}
+
+  /* Stats y hist */
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .stats-tbl th:nth-child(3),.stats-tbl td:nth-child(3),
+  .stats-tbl th:nth-child(4),.stats-tbl td:nth-child(4){display:none}
+
+  /* Modal más ancho */
+  .modal{width:95vw}
+
+  /* Panel WA */
+  .upd-panel{width:98vw}
+
+  /* Quitar sidebar-config en mobile (va en modal ajustes) */
+  .sidebar-config{display:none}
+}
+@media(min-width:769px){
+  .nav-hamburger{display:none}
+  .bottom-nav{display:none!important}
+  .sidebar-overlay{display:none!important}
+}
+/* Bottom nav base */
+.bottom-nav{
+  position:fixed;bottom:0;left:0;right:0;height:60px;
+  background:var(--negro);border-top:1px solid #222;
+  display:none;z-index:100;
+}
+.bnav-items{display:flex;height:100%}
+.bnav-item{
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  color:#666;font-size:10px;font-weight:600;cursor:pointer;gap:3px;
+  border-top:2px solid transparent;transition:all .15s;
+  -webkit-tap-highlight-color:transparent;
+}
+.bnav-item.active{color:var(--rojo);border-top-color:var(--rojo)}
+.bnav-item .ico{font-size:20px;line-height:1}
+.bnav-badge{background:var(--rojo);color:#fff;font-size:9px;padding:1px 4px;border-radius:8px;position:absolute;top:8px;margin-left:12px}
+
+@media print{nav,.sidebar,.toolbar,.acc,.table-wrap,#upd-overlay,.overlay{display:none!important}.cli-wrap{display:block!important;padding:0;background:white;overflow:visible!important;height:auto!important}.main{overflow:visible!important;height:auto!important}.app{height:auto!important}.cli-card{box-shadow:none}@page{margin:12mm 10mm;size:A4}}
+</style>
+</head>
+<body>
+<nav>
+  <div style="display:flex;align-items:center;gap:10px">
+    <button class="nav-hamburger" onclick="toggleSidebar()">☰</button>
+    <div class="nav-brand">武士道 <span>BUSHIDO</span> TECNOLOGÍA</div>
+  </div>
+  <div style="display:flex;gap:6px;align-items:center" class="nav-actions-mobile">
+    <button class="btn btn-gris btn-sm" onclick="exportarJSON()" style="font-size:11px;padding:5px 8px">📤</button>
+    <button class="btn btn-gris btn-sm" onclick="importarJSON()" style="font-size:11px;padding:5px 8px">📥</button>
+  </div>
+  <div class="nav-actions">
+    <button class="btn btn-gris btn-sm" onclick="importarJSON()">📥 Importar</button>
+    <button class="btn btn-negro btn-sm" onclick="exportarJSON()">📤 Backup</button>
+    <button class="btn btn-rojo btn-sm" onclick="abrirNuevo()">+ Agregar</button>
+    <button class="btn btn-sm" style="background:#1a5c1a;color:white" onclick="abrirActualizador()">📨 Actualizar WA</button>
+  </div>
+</nav>
+<div class="app">
+  <div class="sidebar">
+    <div class="sidebar-section">Categorías</div>
+<div class="sidebar-item active" onclick="filtrar('Todas')" id="cat-Todas"><span>📋</span> Todas <span class="sidebar-badge" id="badge-Todas">0</span></div><div class="sidebar-item" onclick="filtrar('Apple')" id="cat-Apple"><span>🍎</span> Apple <span class="sidebar-badge" id="badge-Apple">0</span></div><div class="sidebar-item" onclick="filtrar('Samsung')" id="cat-Samsung"><span>📱</span> Samsung <span class="sidebar-badge" id="badge-Samsung">0</span></div><div class="sidebar-item" onclick="filtrar('Otras Marcas')" id="cat-Otras-Marcas"><span>🌐</span> Otras Marcas <span class="sidebar-badge" id="badge-Otras-Marcas">0</span></div><div class="sidebar-item" onclick="filtrar('Xiaomi')" id="cat-Xiaomi"><span>🔥</span> Xiaomi <span class="sidebar-badge" id="badge-Xiaomi">0</span></div><div class="sidebar-item" onclick="filtrar('Motorola')" id="cat-Motorola"><span>📡</span> Motorola <span class="sidebar-badge" id="badge-Motorola">0</span></div><div class="sidebar-item" onclick="filtrar('Varios')" id="cat-Varios"><span>📦</span> Varios <span class="sidebar-badge" id="badge-Varios">0</span></div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-item" onclick="setVista('stats')" id="nav-stats"><span>📊</span> Estadísticas</div>
+    <div class="sidebar-item" onclick="setVista('hist')" id="nav-hist"><span>📋</span> Historial <span class="sidebar-badge" id="badge-hist">0</span></div>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-section">Configuración</div>
+    <div class="sidebar-config">
+      <div class="config-row"><span class="config-label">Cotización USD → ARS</span><input class="config-input" type="number" id="cfg-cotiz" value="1570" onchange="guardarCfg()"></div>
+      <div class="config-row"><span class="config-label">Recargo estándar (%)</span><input class="config-input" type="number" id="cfg-rec" value="20" step="1" onchange="guardarCfg()"></div>
+      <div class="config-row"><span class="config-label">Recargo Alta Gama (%)</span><input class="config-input" type="number" id="cfg-ag" value="10" step="1" onchange="guardarCfg()"></div>
+      <div class="config-row"><span class="config-label">Mínimo diferencia (USD)</span><input class="config-input" type="number" id="cfg-min" value="75" onchange="guardarCfg()"></div>
+      <div class="config-row"><span class="config-label">Tope máximo (USD)</span><input class="config-input" type="number" id="cfg-max" value="300" onchange="guardarCfg()"></div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="toolbar">
+      <div class="search-wrap"><span class="search-icon">🔍</span><input type="text" id="busq" placeholder="Buscar..." oninput="renderTabla(); if(vista==='cli') renderCli();"></div>
+      <div class="vista-toggle">
+        <button class="vista-btn active" id="btn-int" onclick="setVista('int')">Vista interna</button>
+        <button class="vista-btn" id="btn-cli" onclick="setVista('cli')">Vista cliente</button>
+      </div>
+      <label class="form-check" style="margin:0"><input type="checkbox" id="chk-ss" checked onchange="renderTabla(); if(vista==='cli') renderCli();"><span style="font-size:12px;color:var(--gris-txt)">Ver sin stock</span></label>
+      <span class="count-badge" id="lbl-count"></span>
+      <div class="sort-bar">
+        <span style="font-size:11px;color:var(--gris-txt)">Ordenar:</span>
+        <button class="sort-btn" id="sort-nom" onclick="setSort('nombre')">A→Z</button>
+        <button class="sort-btn" id="sort-v" onclick="setSort('venta')">Precio ↑↓</button>
+        <button class="sort-btn" id="sort-c" onclick="setSort('costo')">Costo ↑↓</button>
+        <button class="sort-btn" id="sort-none" onclick="setSort(null)">Original</button>
+      </div>
+      <button class="btn btn-sm" id="btn-pdf" onclick="descargarPDF()" style="background:#1a3a6b;color:white">📄 PDF Cliente</button>
+    </div>
+    <div class="table-wrap" id="tbl-int">
+      <table><thead><tr>
+        <th style="width:36px" class="hide-mob">#</th><th>Producto</th>
+        <th class="right hide-mob" style="width:90px">Costo USD</th>
+        <th class="right" style="width:105px">Venta USD</th>
+        <th class="right hide-mob" style="width:115px">Precio ARS</th>
+        <th class="center" style="width:80px">Acciones</th>
+      </tr></thead><tbody id="tbody"></tbody></table>
+    </div>
+    <div class="stats-wrap" id="tbl-stats"><div id="stats-content"></div></div>
+    <div class="hist-wrap" id="tbl-hist">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+        <h2 style="font-size:16px;font-weight:700">Historial de cambios de precio</h2>
+        <button class="btn-clear-hist" onclick="limpiarHistorial()">🗑 Limpiar historial</button>
+      </div>
+      <div id="hist-content"></div>
+    </div>
+    <div class="cli-wrap" id="tbl-cli"><div class="cli-card" id="cli-card"></div></div>
+  </div>
+</div>
+
+<div class="upd-overlay" id="upd-overlay">
+  <div class="upd-panel">
+    <div class="upd-header">
+      <h2>📨 Actualizar precios desde WhatsApp</h2>
+      <button class="modal-close" onclick="cerrarActualizador()">✕</button>
+    </div>
+    <div class="upd-body">
+      <div class="upd-steps">
+        <div class="upd-step active" id="upd-stp1">1. Pegá el mensaje</div>
+        <div class="upd-step" id="upd-stp2">2. Revisá los cambios</div>
+        <div class="upd-step" id="upd-stp3">3. Aplicá</div>
+      </div>
+
+      <!-- Paso 1 -->
+      <div id="upd-paso1">
+        <p style="font-size:13px;margin-bottom:10px;color:var(--gris-txt)">Pegá el mensaje completo del proveedor tal como te llegó por WhatsApp:</p>
+        <textarea class="upd-ta" id="upd-texto" placeholder="Pegá acá el mensaje del proveedor..."></textarea>
+        <div class="upd-hint">💡 La app detecta precios automáticamente y te muestra las diferencias antes de aplicar nada.</div>
+        <div style="margin-top:14px;display:flex;gap:10px;align-items:center">
+          <button class="btn btn-rojo" onclick="parsearYDiff()">Analizar mensaje →</button>
+          <span id="upd-parse-status" style="font-size:12px;color:var(--gris-txt)"></span>
+        </div>
+      </div>
+
+      <!-- Paso 2 -->
+      <div id="upd-paso2" style="display:none">
+        <div id="diff-container"></div>
+      </div>
+
+    </div>
+    <div class="upd-footer">
+      <span class="upd-resumen" id="upd-resumen"></span>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-gris" id="upd-btn-volver" onclick="volverPaso1()" style="display:none">← Volver</button>
+        <button class="btn btn-rojo" id="upd-btn-aplicar" onclick="aplicarCambios()" style="display:none">✅ Aplicar cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="modal-ov">
+  <div class="modal">
+    <div class="modal-header"><h3 id="modal-tit">Nuevo producto</h3><button class="modal-close" onclick="cerrarModal()">✕</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="f-id">
+      <div class="form-row"><label>Categoría</label><select id="f-cat"><option>Apple</option><option>Samsung</option><option>Otras Marcas</option><option>Xiaomi</option><option>Motorola</option><option>Varios</option></select></div>
+      <div class="form-row"><label>Nombre del producto</label><input type="text" id="f-nom" placeholder="Ej: Samsung A37 5G 8GB 256GB (Black)"></div>
+      <div class="form-row"><label>Costo USD (precio de compra al proveedor)</label><input type="number" id="f-costo" placeholder="0" oninput="prevCalc()"></div>
+      <div class="form-preview">
+        <div class="prev-item"><div class="val" id="pv-venta">$0</div><div class="lbl">Venta USD</div></div>
+        <div class="prev-item"><div class="val" id="pv-ars" style="color:var(--negro);font-size:15px">$0</div><div class="lbl">Precio ARS</div></div>
+        <div class="prev-item"><div class="val" id="pv-margen" style="color:var(--verde);font-size:15px">+$0</div><div class="lbl">Margen USD</div></div>
+      </div>
+      
+      <label class="form-check"><input type="checkbox" id="f-ag" onchange="prevCalc()"> ⭐ Alta Gama (recargo reducido)</label>
+      <label class="form-check"><input type="checkbox" id="f-ss"> ⚠️ Sin Stock</label>
+    </div>
+    <div class="modal-footer"><button class="btn btn-gris" onclick="cerrarModal()">Cancelar</button><button class="btn btn-rojo" onclick="guardarProd()">Guardar</button></div>
+  </div>
+</div>
+<div class="loading-overlay" id="loading-overlay">
+  <div class="loading-spinner"></div>
+  <div class="loading-title">武士道 <span>BUSHIDO</span></div>
+  <div class="loading-sub" id="loading-msg">Conectando con la base de datos...</div>
+</div>
+<div class="sync-indicator" id="sync-ind"></div>
+
+<div class="sidebar-overlay" id="sidebar-overlay" onclick="cerrarSidebar()"></div>
+<nav class="bottom-nav">
+  <div class="bnav-items">
+    <div class="bnav-item active" id="bnav-int" onclick="setVista('int')">
+      <span class="ico">📋</span><span>Catálogo</span>
+    </div>
+    <div class="bnav-item" id="bnav-cli" onclick="setVista('cli')">
+      <span class="ico">👁</span><span>Cliente</span>
+    </div>
+    <div class="bnav-item" id="bnav-wa" onclick="abrirActualizador()">
+      <span class="ico">📨</span><span>Actualizar</span>
+    </div>
+    <div class="bnav-item" id="bnav-stats" onclick="setVista('stats')">
+      <span class="ico">📊</span><span>Stats</span>
+    </div>
+    <div class="bnav-item" id="bnav-hist" onclick="setVista('hist')" style="position:relative">
+      <span class="ico">📋</span><span>Historial</span>
+      <span class="bnav-badge" id="bnav-badge-hist" style="display:none">0</span>
+    </div>
+  </div>
+</nav>
+<input type="file" id="file-imp" accept=".json" style="display:none" onchange="cargarJSON(event)">
+<div class="toast" id="toast-el"></div>
+<script>
+console.log('[Bushido] Script iniciando...');
+const INIT=[{"id": 1, "categoria": "Apple", "nombre": "Apple AirPods Max (Blue)", "costo": 530, "garantia": "Garant\u00eda Oficial Apple", "altaGama": false, "sinStock": false}, {"id": 2, "categoria": "Apple", "nombre": "Apple AirPods Pro 3 (White) MagSafe", "costo": 280, "garantia": "Garant\u00eda Oficial Apple", "altaGama": true, "sinStock": false}, {"id": 3, "categoria": "Apple", "nombre": "Apple Watch Ultra 3 49MM GPS+Cellular (Black)", "costo": 840, "garantia": "Garant\u00eda Oficial Apple", "altaGama": false, "sinStock": false}, {"id": 4, "categoria": "Apple", "nombre": "Apple Watch Series 11 42MM GPS Aluminum (Jet Black/Black)", "costo": 400, "garantia": "Garant\u00eda Oficial Apple", "altaGama": false, "sinStock": false}, {"id": 5, "categoria": "Apple", "nombre": "Apple Watch Series 11 46MM GPS Aluminum (Jet Black/Black)", "costo": 430, "garantia": "Garant\u00eda Oficial Apple", "altaGama": false, "sinStock": false}, {"id": 6, "categoria": "Apple", "nombre": "iPhone 13 128GB (Black)", "costo": 520, "garantia": "Garant\u00eda Oficial Apple", "altaGama": false, "sinStock": false}, {"id": 7, "categoria": "Apple", "nombre": "iPhone 15 128GB (Blue)", "costo": 680, "garantia": "Garant\u00eda Oficial Apple", "altaGama": false, "sinStock": false}, {"id": 8, "categoria": "Apple", "nombre": "iPhone 15 Pro Max 256GB (Natural/Black)", "costo": 1100, "garantia": "Garant\u00eda Oficial Apple", "altaGama": false, "sinStock": false}, {"id": 9, "categoria": "Apple", "nombre": "iPhone 16e 128GB (Black)", "costo": 610, "garantia": "Garant\u00eda Oficial Apple", "altaGama": false, "sinStock": false}, {"id": 10, "categoria": "Apple", "nombre": "iPhone 16 128GB (Teal)", "costo": 790, "garantia": "Garant\u00eda Oficial Apple", "altaGama": true, "sinStock": false}, {"id": 11, "categoria": "Apple", "nombre": "iPhone 17 Air 256GB (Black/White)", "costo": 970, "garantia": "Garant\u00eda Oficial Apple", "altaGama": false, "sinStock": false}, {"id": 12, "categoria": "Apple", "nombre": "iPhone 17 256GB", "costo": 925, "garantia": "Garant\u00eda Oficial Apple", "altaGama": true, "sinStock": false}, {"id": 13, "categoria": "Apple", "nombre": "iPhone 17 Pro 256GB", "costo": 1190, "garantia": "Garant\u00eda Oficial Apple", "altaGama": true, "sinStock": false}, {"id": 14, "categoria": "Apple", "nombre": "iPhone 17 Pro 512GB (Blue/Orange)", "costo": 1380, "garantia": "Garant\u00eda Oficial Apple", "altaGama": true, "sinStock": false}, {"id": 15, "categoria": "Apple", "nombre": "iPhone 17 Pro Max 256GB", "costo": 1290, "garantia": "Garant\u00eda Oficial Apple", "altaGama": true, "sinStock": false}, {"id": 16, "categoria": "Apple", "nombre": "iPhone 17 Pro Max 256GB (variante)", "costo": 1290, "garantia": "Garant\u00eda Oficial Apple", "altaGama": true, "sinStock": false}, {"id": 17, "categoria": "Apple", "nombre": "iPhone 17 Pro Max 512GB", "costo": 1490, "garantia": "Garant\u00eda Oficial Apple", "altaGama": true, "sinStock": false}, {"id": 18, "categoria": "Apple", "nombre": "iPhone 17 Pro Max 1TB (Silver)", "costo": 1730, "garantia": "Garant\u00eda Oficial Apple", "altaGama": true, "sinStock": false}, {"id": 19, "categoria": "Apple", "nombre": "iPad 10\u00aa Generaci\u00f3n A14 64GB WiFi (Silver/Blue)", "costo": 400, "garantia": "Garant\u00eda Oficial Apple", "altaGama": false, "sinStock": false}, {"id": 20, "categoria": "Apple", "nombre": "iPad 11\u00aa Generaci\u00f3n A16 128GB WiFi", "costo": 490, "garantia": "Garant\u00eda Oficial Apple", "altaGama": true, "sinStock": false}, {"id": 21, "categoria": "Apple", "nombre": "iPad 11\u00aa Generaci\u00f3n A16 256GB WiFi", "costo": 590, "garantia": "Garant\u00eda Oficial Apple", "altaGama": false, "sinStock": false}, {"id": 22, "categoria": "Apple", "nombre": "Apple AirTag \u2013 Pack por 4 unidades", "costo": 92, "garantia": "Garant\u00eda Oficial Apple", "altaGama": false, "sinStock": false}, {"id": 23, "categoria": "Apple", "nombre": "Cable USB-C a USB-C (Orange) 1M", "costo": 20, "garantia": "Garant\u00eda Oficial Apple", "altaGama": false, "sinStock": false}, {"id": 24, "categoria": "Apple", "nombre": "Cable USB-C a Lightning 1M", "costo": 20, "garantia": "Garant\u00eda Oficial Apple", "altaGama": false, "sinStock": false}, {"id": 25, "categoria": "Apple", "nombre": "Cable USB-A a Lightning 1M", "costo": 18, "garantia": "Garant\u00eda Oficial Apple", "altaGama": false, "sinStock": false}, {"id": 26, "categoria": "Apple", "nombre": "Cargador Original USB-C 40W/60W (MacBook/iPhone)", "costo": 50, "garantia": "Garant\u00eda Oficial Apple", "altaGama": false, "sinStock": false}, {"id": 27, "categoria": "Apple", "nombre": "Cargador Original USB-C 20W (iPhone)", "costo": 20, "garantia": "Garant\u00eda Oficial Apple", "altaGama": false, "sinStock": false}, {"id": 28, "categoria": "Samsung", "nombre": "Samsung S26 Ultra 5G 12GB 512GB (Black/Blue)", "costo": 1130, "garantia": "6 meses", "altaGama": false, "sinStock": false}, {"id": 29, "categoria": "Samsung", "nombre": "Samsung S26 Ultra 5G 12GB 256GB (Black/Blue)", "costo": 1000, "garantia": "6 meses", "altaGama": false, "sinStock": false}, {"id": 30, "categoria": "Samsung", "nombre": "Samsung S26 Plus 5G 12GB 512GB (Black)", "costo": 1120, "garantia": "6 meses", "altaGama": false, "sinStock": false}, {"id": 31, "categoria": "Samsung", "nombre": "Samsung S26 Plus 5G 12GB 256GB", "costo": 1050, "garantia": "6 meses", "altaGama": false, "sinStock": false}, {"id": 32, "categoria": "Samsung", "nombre": "Samsung S26 5G 12GB 512GB (Black)", "costo": 920, "garantia": "6 meses", "altaGama": false, "sinStock": false}, {"id": 33, "categoria": "Samsung", "nombre": "Samsung S25 Ultra 5G 12GB 512GB (Black/SilverBlue)", "costo": 970, "garantia": "6 meses", "altaGama": false, "sinStock": false}, {"id": 34, "categoria": "Samsung", "nombre": "Samsung S25 Edge 5G 12GB 256GB (Icyblue)", "costo": 730, "garantia": "6 meses", "altaGama": false, "sinStock": false}, {"id": 35, "categoria": "Samsung", "nombre": "Samsung S25 5G 12GB 256GB (Navy/Silver/Icyblue)", "costo": 700, "garantia": "6 meses", "altaGama": false, "sinStock": false}, {"id": 36, "categoria": "Samsung", "nombre": "Samsung A57 5G 12GB 512GB (Navy)", "costo": 630, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 37, "categoria": "Samsung", "nombre": "Samsung A57 5G 8GB 256GB (Navy)", "costo": 450, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 38, "categoria": "Samsung", "nombre": "Samsung A56 5G 12GB 256GB (Silver)", "costo": 420, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 39, "categoria": "Samsung", "nombre": "Samsung A56 5G 8GB 256GB (Gray)", "costo": 390, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 40, "categoria": "Samsung", "nombre": "Samsung A37 5G 8GB 256GB (Black)", "costo": 430, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 41, "categoria": "Samsung", "nombre": "Samsung A37 5G 6GB 128GB (Black/Graygreen)", "costo": 385, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 42, "categoria": "Samsung", "nombre": "Samsung A27 5G 8GB 256GB (Black)", "costo": 380, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 43, "categoria": "Samsung", "nombre": "Samsung A36 5G 8GB 256GB (Black/White/Lima/Lavander)", "costo": 313, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 44, "categoria": "Samsung", "nombre": "Samsung A26 5G 8GB 256GB (Black/White)", "costo": 275, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 45, "categoria": "Samsung", "nombre": "Samsung A17 5G 8GB 256GB (Black)", "costo": 250, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 46, "categoria": "Samsung", "nombre": "Samsung A17 5G 6GB 128GB (Gray)", "costo": 190, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 47, "categoria": "Samsung", "nombre": "Samsung A17 5G 4GB 128GB (Black)", "costo": 185, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 48, "categoria": "Samsung", "nombre": "Samsung A17 4GB 128GB (Black)", "costo": 175, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 49, "categoria": "Samsung", "nombre": "Samsung A07 4GB 128GB (Black/Green)", "costo": 147, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 50, "categoria": "Samsung", "nombre": "Samsung A07 4GB 64GB (Black)", "costo": 122, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 51, "categoria": "Samsung", "nombre": "Samsung A16 4GB 128GB (Black)", "costo": 147, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 52, "categoria": "Samsung", "nombre": "Samsung A06 4GB 128GB (Black)", "costo": 132, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 53, "categoria": "Samsung", "nombre": "Samsung A06 4GB 64GB (Black)", "costo": 115, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 54, "categoria": "Samsung", "nombre": "Samsung Cargador Original 25W USB-C", "costo": 22, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 55, "categoria": "Otras Marcas", "nombre": "Google Pixel 10 5G 12GB 256GB (Obsidian/\u00cdndigo/Frost)", "costo": 850, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 56, "categoria": "Otras Marcas", "nombre": "Huawei Pura80 Pro 12GB 512GB (Black/White)", "costo": 900, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 57, "categoria": "Otras Marcas", "nombre": "Alcatel 1 Ultra 32GB (Black)", "costo": 40, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 58, "categoria": "Otras Marcas", "nombre": "Cat B30 4G (Black)", "costo": 45, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 59, "categoria": "Otras Marcas", "nombre": "Realme GT3 5G 240W 16GB 1TB Carga 240W (Purple)", "costo": 450, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 60, "categoria": "Otras Marcas", "nombre": "Infinix Note 50 Pro 8GB 256GB + MagCharge (Purple)", "costo": 265, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 61, "categoria": "Otras Marcas", "nombre": "Infinix Note 40 Pro+ 5G 12GB 256GB + MagCharge (Black/Grey)", "costo": 280, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 62, "categoria": "Otras Marcas", "nombre": "Infinix Note 40 Pro 5G 8GB 256GB + MagCharge (Grey/Gold)", "costo": 250, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 63, "categoria": "Otras Marcas", "nombre": "OPPO A40 4GB 256GB Grado Militar (Caf\u00e9/Purple)", "costo": 140, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 64, "categoria": "Xiaomi", "nombre": "Xiaomi Mi 17 Ultra 5G 16GB 512GB (Green)", "costo": 1320, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 65, "categoria": "Xiaomi", "nombre": "Xiaomi Mi 17 5G 12GB 512GB (Blue) slim", "costo": 880, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 66, "categoria": "Xiaomi", "nombre": "Xiaomi Mi 17T Pro 5G 12GB 512GB (Black)", "costo": 840, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 67, "categoria": "Xiaomi", "nombre": "Xiaomi Mi 17T Pro 5G 12GB 1TB", "costo": 950, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 68, "categoria": "Xiaomi", "nombre": "Xiaomi 15T Pro 5G 12GB 512GB (Gray/Black)", "costo": 750, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 69, "categoria": "Xiaomi", "nombre": "Xiaomi 15T 5G 12GB 512GB (Black)", "costo": 630, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 70, "categoria": "Xiaomi", "nombre": "Xiaomi 15T 5G 12GB 256GB (Gray)", "costo": 490, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 71, "categoria": "Xiaomi", "nombre": "Poco F8 Ultra 5G 16GB 512GB (Black)", "costo": 900, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 72, "categoria": "Xiaomi", "nombre": "Poco F8 Ultra 5G 12GB 256GB (Negro)", "costo": 780, "garantia": "2 meses", "altaGama": true, "sinStock": false}, {"id": 73, "categoria": "Xiaomi", "nombre": "Poco F8 Pro 5G 12GB 512GB (Silver)", "costo": 680, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 74, "categoria": "Xiaomi", "nombre": "Poco F8 Pro 5G 12GB 256GB (Blue)", "costo": 545, "garantia": "2 meses", "altaGama": true, "sinStock": false}, {"id": 75, "categoria": "Xiaomi", "nombre": "Poco X8 Pro Max 5G 12GB 512GB (Black/Blue)", "costo": 570, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 76, "categoria": "Xiaomi", "nombre": "Poco X8 Pro Max 5G 12GB 256GB (Blue/Black)", "costo": 510, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 77, "categoria": "Xiaomi", "nombre": "Poco X8 Pro 5G 12GB 512GB (Black/Green)", "costo": 435, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 78, "categoria": "Xiaomi", "nombre": "Poco X8 Pro 5G 8GB 512GB (Black)", "costo": 425, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 79, "categoria": "Xiaomi", "nombre": "Poco X8 Pro 5G 8GB 256GB (Black)", "costo": 370, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 80, "categoria": "Xiaomi", "nombre": "Poco X7 Pro 5G 12GB 512GB (Green)", "costo": 385, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 81, "categoria": "Xiaomi", "nombre": "Poco X7 Pro 5G 8GB 256GB (Black)", "costo": 330, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 82, "categoria": "Xiaomi", "nombre": "Poco C71 4GB 128GB (Black)", "costo": 135, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 83, "categoria": "Xiaomi", "nombre": "Poco C81 Pro 4GB 128GB (Black)", "costo": 135, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 84, "categoria": "Xiaomi", "nombre": "Poco C81 Pro 4GB 256GB (Black)", "costo": 165, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 85, "categoria": "Xiaomi", "nombre": "Poco C85 8GB 256GB (Green/Black)", "costo": 180, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 86, "categoria": "Xiaomi", "nombre": "Poco M8 5G 8GB 512GB (Black)", "costo": 275, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 87, "categoria": "Xiaomi", "nombre": "Poco M8S 5G 8GB 256GB (Black)", "costo": 250, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 88, "categoria": "Xiaomi", "nombre": "Redmi Note 15 6GB 128GB (Black)", "costo": 205, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 89, "categoria": "Xiaomi", "nombre": "Redmi Note 15 8GB 256GB (Black)", "costo": 233, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 90, "categoria": "Xiaomi", "nombre": "Redmi Note 15 Pro 12GB 512GB (Black)", "costo": 330, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 91, "categoria": "Xiaomi", "nombre": "Redmi Note 15 Pro 8GB 256GB (Black/Titanium)", "costo": 290, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 92, "categoria": "Xiaomi", "nombre": "Redmi Note 15 5G 8GB 256GB (Black)", "costo": 262, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 93, "categoria": "Xiaomi", "nombre": "Redmi Note 15 Pro 5G 8GB 256GB (Black)", "costo": 325, "garantia": "2 meses", "altaGama": true, "sinStock": false}, {"id": 94, "categoria": "Xiaomi", "nombre": "Redmi Note 15 Pro 5G 8GB 512GB (Black)", "costo": 355, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 95, "categoria": "Xiaomi", "nombre": "Redmi Note 15 Pro 5G 12GB 512GB (Black)", "costo": 390, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 96, "categoria": "Xiaomi", "nombre": "Redmi Note 15 Pro+ 5G 8GB 256GB (Blue)", "costo": 380, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 97, "categoria": "Xiaomi", "nombre": "Redmi Note 15 Pro+ 5G 12GB 512GB (Black)", "costo": 440, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 98, "categoria": "Xiaomi", "nombre": "Redmi Note 14 8GB 256GB (Purple) slim", "costo": 205, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 99, "categoria": "Xiaomi", "nombre": "Redmi Note 14 5G 8GB 256GB (Purple) slim", "costo": 215, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 100, "categoria": "Xiaomi", "nombre": "Redmi Note 14S 8GB 256GB (Black)", "costo": 225, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 101, "categoria": "Xiaomi", "nombre": "Redmi Note 14S 12GB 512GB (Black)", "costo": 270, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 102, "categoria": "Xiaomi", "nombre": "Redmi Note 14 Pro 5G 8GB 256GB (Green)", "costo": 275, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 103, "categoria": "Xiaomi", "nombre": "Redmi Note 14 Pro 5G 12GB 256GB (Black)", "costo": 290, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 104, "categoria": "Xiaomi", "nombre": "Redmi Note 14 Pro 5G 12GB 512GB (White/Black/Green)", "costo": 330, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 105, "categoria": "Xiaomi", "nombre": "Redmi Note 14 Pro+ 5G 12GB 256GB (Black/Blue/Green)", "costo": 320, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 106, "categoria": "Xiaomi", "nombre": "Redmi Note 14 Pro+ 5G 12GB 512GB (Black)", "costo": 390, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 107, "categoria": "Xiaomi", "nombre": "Redmi Note 14 Pro+ 5G 16GB 512GB (White)", "costo": 410, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 108, "categoria": "Xiaomi", "nombre": "Redmi 17 6GB 256GB (Black)", "costo": 250, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 109, "categoria": "Xiaomi", "nombre": "Redmi 17 4GB 256GB (Black)", "costo": 230, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 110, "categoria": "Xiaomi", "nombre": "Redmi 17 4GB 128GB (Purple)", "costo": 195, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 111, "categoria": "Xiaomi", "nombre": "Redmi 15 8GB 256GB (Black)", "costo": 200, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 112, "categoria": "Xiaomi", "nombre": "Redmi 15C 8GB 256GB (Black)", "costo": 177, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 113, "categoria": "Xiaomi", "nombre": "Redmi 15C 4GB 256GB (Black/Green)", "costo": 163, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 114, "categoria": "Xiaomi", "nombre": "Redmi 15C 4GB 128GB (Black/Blue/Green)", "costo": 150, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 115, "categoria": "Xiaomi", "nombre": "Redmi A7 PRO 4GB 128GB (Black)", "costo": 145, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 116, "categoria": "Xiaomi", "nombre": "Redmi A5 4GB 128GB (Black/Gold/Green)", "costo": 137, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 117, "categoria": "Xiaomi", "nombre": "Redmi A5 3GB 64GB (Black)", "costo": 115, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 118, "categoria": "Motorola", "nombre": "Moto Edge 70 Pro 5G 12GB 512GB (White)", "costo": 810, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 119, "categoria": "Motorola", "nombre": "Moto Edge 70 5G 12GB 512GB (White) Swarovski", "costo": 620, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 120, "categoria": "Motorola", "nombre": "Moto Edge 70 5G 12GB 512GB (Gris) slim", "costo": 540, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 121, "categoria": "Motorola", "nombre": "Moto Edge 70 Fusion 5G 12GB 256GB (Black)", "costo": 430, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 122, "categoria": "Motorola", "nombre": "Moto Edge 70 Fusion 5G 8GB 256GB (Black)", "costo": 400, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 123, "categoria": "Motorola", "nombre": "Moto Edge 60 Pro 5G 12GB 512GB (Gris/Blue/Uva)", "costo": 480, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 124, "categoria": "Motorola", "nombre": "Moto Edge 60 Fusion 5G 8GB 256GB (Pink/Grey)", "costo": 300, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 125, "categoria": "Motorola", "nombre": "Moto Edge 50 5G 12GB 512GB (Grey/Green)", "costo": 330, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 126, "categoria": "Motorola", "nombre": "Moto Edge 50 Fusion 5G 8GB 256GB (Green) Slim", "costo": 250, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 127, "categoria": "Motorola", "nombre": "Moto G77 5G 256GB 8GB (Caf\u00e9/Esmeralda)", "costo": 315, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 128, "categoria": "Motorola", "nombre": "Moto G67 5G 256GB 4GB (Gris/Lima)", "costo": 285, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 129, "categoria": "Motorola", "nombre": "Moto G86 Power 5G 256GB 8GB (Cereza)", "costo": 260, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 130, "categoria": "Motorola", "nombre": "Moto G86 5G 512GB 8GB (Cereza)", "costo": 290, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 131, "categoria": "Motorola", "nombre": "Moto G86 5G 256GB 8GB (Blue) slim", "costo": 270, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 132, "categoria": "Motorola", "nombre": "Moto G56 5G 256GB 8GB (Blue)", "costo": 250, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 133, "categoria": "Motorola", "nombre": "Moto G17 Power 256GB 8GB (Ar\u00e1ndano/Blue)", "costo": 255, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 134, "categoria": "Motorola", "nombre": "Moto G17 256GB 4GB (Rosa/Celeste/Ar\u00e1ndano)", "costo": 210, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 135, "categoria": "Motorola", "nombre": "Moto G35 5G 256GB 4GB (Black)", "costo": 190, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 136, "categoria": "Motorola", "nombre": "Moto G15 Power 256GB 8GB (Grey) Slim", "costo": 175, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 137, "categoria": "Motorola", "nombre": "Moto G15 512GB 4GB (Blue)", "costo": 185, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 138, "categoria": "Motorola", "nombre": "Moto G15 256GB 4GB (Green/Orange)", "costo": 160, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 139, "categoria": "Motorola", "nombre": "Moto G06 Power 64GB 4GB Slim (Laurel Khaki)", "costo": 115, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 140, "categoria": "Motorola", "nombre": "Moto G06 256GB 4GB (Verde/Azul/Naranja)", "costo": 150, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 141, "categoria": "Motorola", "nombre": "Moto G06 128GB 4GB (Azul)", "costo": 143, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 142, "categoria": "Motorola", "nombre": "Moto G05 128GB 4GB (Green)", "costo": 130, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 143, "categoria": "Motorola", "nombre": "Moto G04S 256GB 4GB (Green)", "costo": 140, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 144, "categoria": "Motorola", "nombre": "Moto E15 64GB 2GB (Blue) con Cargador", "costo": 120, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 145, "categoria": "Varios", "nombre": "Nokia 106 (x20 unidades)", "costo": 18, "garantia": "Sin garant\u00eda", "altaGama": false, "sinStock": false}, {"id": 146, "categoria": "Varios", "nombre": "Cerradura Inteligente Xiaomi Self-Install Smart Lock + Keypad", "costo": 150, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 147, "categoria": "Varios", "nombre": "C\u00e1mara Xiaomi Smart C700 8MP 4K Wi-Fi", "costo": 75, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 148, "categoria": "Varios", "nombre": "Parlante JBL PartyBox 710", "costo": 820, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 149, "categoria": "Varios", "nombre": "Parlante JBL Boombox 4 (Black)", "costo": 460, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 150, "categoria": "Varios", "nombre": "Parlante JBL Charge 5 (Red)", "costo": 140, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 151, "categoria": "Varios", "nombre": "Parlante JBL Grip (Black/White)", "costo": 80, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 152, "categoria": "Varios", "nombre": "Nintendo Switch 2 256GB + Mario Kart World", "costo": 730, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 153, "categoria": "Varios", "nombre": "Xbox 360 Stingray 4GB \u2013 Nuevas (Fuente 220V)", "costo": 200, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 154, "categoria": "Varios", "nombre": "PlayStation 3 500GB Con flash + juegos digitales", "costo": 250, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 155, "categoria": "Varios", "nombre": "Aspiradora Xiaomi Robot Vacuum S40 (White)", "costo": 250, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 156, "categoria": "Varios", "nombre": "Aspiradora Xiaomi Robot Vacuum X20 Pro", "costo": 700, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 157, "categoria": "Varios", "nombre": "Robot limpiavidrios ECOVACS WINBOT MINI White", "costo": 295, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 158, "categoria": "Varios", "nombre": "Anthbot Genie 600 \u2013 Robot Cortac\u00e9sped Inteligente", "costo": 1200, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 159, "categoria": "Varios", "nombre": "Redmi Buds 6 Play", "costo": 14, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 160, "categoria": "Varios", "nombre": "JBL Tune 730BT White", "costo": 57, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 161, "categoria": "Varios", "nombre": "Parlante JBL Flip 7 (Black)", "costo": 105, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 162, "categoria": "Varios", "nombre": "Amazon Fire TV Stick 4K Select 8GB Wi-Fi 5", "costo": 45, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 163, "categoria": "Varios", "nombre": "Amazon Kindle Gen 11 16GB (Matcha)", "costo": 165, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 164, "categoria": "Varios", "nombre": "Xiaomi 33W Magnetic Power Bank 10000mAh", "costo": 40, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 165, "categoria": "Varios", "nombre": "Xiaomi Sports Fanny Pack (Black)", "costo": 30, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 166, "categoria": "Varios", "nombre": "EA Sports FC 26 PS5 (F\u00edsico)", "costo": 50, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 167, "categoria": "Varios", "nombre": "PlayStation 5 Pro 2TB Digital", "costo": 1400, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 168, "categoria": "Varios", "nombre": "PlayStation 5 Slim 825GB Digital", "costo": 730, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 169, "categoria": "Varios", "nombre": "Xiaomi Electric Shaver S700", "costo": 90, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 170, "categoria": "Varios", "nombre": "Xiaomi Electric Shaver S200", "costo": 35, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 171, "categoria": "Varios", "nombre": "Xiaomi Mi 5-Blade Electric Shaver", "costo": 90, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 172, "categoria": "Varios", "nombre": "Compresor de Aire Port\u00e1til Xiaomi 2 Pro", "costo": 65, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 173, "categoria": "Varios", "nombre": "Compresor de Aire Port\u00e1til Xiaomi 2", "costo": 45, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 174, "categoria": "Varios", "nombre": "Xiaomi Mi Vacuum Cleaner Mini", "costo": 60, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 175, "categoria": "Varios", "nombre": "Aspiradora Xiaomi Robot Vacuum S40 Pro", "costo": 400, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 176, "categoria": "Varios", "nombre": "Motorola Talkabout T470 Two-Way Radios", "costo": 110, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 177, "categoria": "Varios", "nombre": "PlayStation 5 Joystick Original", "costo": 85, "garantia": "2 meses", "altaGama": false, "sinStock": false}, {"id": 178, "categoria": "Varios", "nombre": "Nintendo Switch OLED 64GB + Mario Wonder", "costo": 455, "garantia": "2 meses", "altaGama": false, "sinStock": false}]
+;
+// ── SUPABASE CONFIG ──────────────────────────────────────────────────────────
+const SUPA_URL='https://gcbwlkyweriovubxqsty.supabase.co';
+const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdjYndsa3l3ZXJpb3Z1Ynhxc3R5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkzMjExNTQsImV4cCI6MjEwNDg5NzE1NH0.4jeS8YbwhYEI3nHxHHWQxBGGoGYVFrT8mMRDoVLrYz0';
+const SUPA_HDR={'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Content-Type':'application/json','Prefer':'return=representation'};
+async function sGet(t,q=''){const r=await fetch(SUPA_URL+'/rest/v1/'+t+(q?'?'+q:''),{headers:SUPA_HDR});if(!r.ok)throw new Error(r.statusText);return r.json()}
+async function sPost(t,d){const h2={...SUPA_HDR,'Prefer':'return=representation'};const r=await fetch(SUPA_URL+'/rest/v1/'+t,{method:'POST',headers:h2,body:JSON.stringify(d)});if(!r.ok)throw new Error(await r.text());return r.json()}
+async function sPatch(t,q,d){const r=await fetch(SUPA_URL+'/rest/v1/'+t+'?'+q,{method:'PATCH',headers:{...SUPA_HDR,'Prefer':'return=minimal'},body:JSON.stringify(d)});return r.ok}
+async function sDelete(t,q){const r=await fetch(SUPA_URL+'/rest/v1/'+t+'?'+q,{method:'DELETE',headers:SUPA_HDR});return r.ok}
+async function sUpsert(t,d){
+  const h2={...SUPA_HDR,'Prefer':'resolution=merge-duplicates,return=minimal'};
+  const r=await fetch(SUPA_URL+'/rest/v1/'+t,{method:'POST',headers:h2,body:JSON.stringify(d)});
+  if(!r.ok){const err=await r.text();throw new Error(err);}
+  return true;
+}
+function mapJS(p){return{id:p.id,categoria:p.categoria,nombre:p.nombre,costo:parseFloat(p.costo),altaGama:p.alta_gama,sinStock:p.sin_stock}}
+function mapDB(p){return{categoria:p.categoria,nombre:p.nombre,costo:p.costo,alta_gama:!!p.altaGama,sin_stock:!!p.sinStock,updated_at:new Date().toISOString()}}
+
+let prods=[],cat='Todas',vista='int',sortField=null,sortDir=1;
+let cfg={cotiz:1570,rec:.2,ag:.1,min:75,max:300};
+let online=true;
+
+function syncInd(estado,msg){const el=document.getElementById('sync-ind');el.textContent=msg;el.className='sync-indicator show '+(estado||'');if(estado==='ok')setTimeout(()=>el.classList.remove('show'),2500);}
+function setCfgUI(){document.getElementById('cfg-cotiz').value=cfg.cotiz;document.getElementById('cfg-rec').value=Math.round(cfg.rec*100);document.getElementById('cfg-ag').value=Math.round(cfg.ag*100);document.getElementById('cfg-min').value=cfg.min;document.getElementById('cfg-max').value=cfg.max||300;}
+
+async function migrarDatos(){
+  const BATCH=50;
+  for(let i=0;i<INIT.length;i+=BATCH){
+    const b=INIT.slice(i,i+BATCH).map(p=>({categoria:p.categoria,nombre:p.nombre,costo:p.costo,alta_gama:!!p.altaGama,sin_stock:!!p.sinStock}));
+    await sPost('productos',b);
+  }
+  const data=await sGet('productos','order=id');
+  prods=data.map(mapJS);
+}
+
+async function init(){
+  const msg=document.getElementById('loading-msg');
+  try{
+    msg.textContent='Cargando configuración...';
+    const cfgData=await sGet('config','id=eq.1');
+    if(cfgData[0]){const c=cfgData[0];cfg={cotiz:parseFloat(c.cotiz),rec:parseFloat(c.recargo),ag:parseFloat(c.recargo_ag),min:parseFloat(c.min_diff),max:parseFloat(c.max_diff)};setCfgUI();}
+    msg.textContent='Cargando productos...';
+    const prodsData=await sGet('productos','order=id');
+    if(prodsData.length>0){prods=prodsData.map(mapJS);}
+    else{msg.textContent='Primera vez — migrando '+INIT.length+' productos...';await migrarDatos();}
+    msg.textContent='Cargando historial...';
+    const histData=await sGet('historial','order=fecha.desc&limit=200');
+    historial=histData.map(h=>{return{tipo:h.tipo,nombre:h.nombre,categoria:h.categoria,costoAnterior:h.costo_anterior,costoNuevo:h.costo_nuevo,fecha:h.fecha}});
+    const sinData=await sGet('sinonimos','');
+    sinonimos={};sinData.forEach(s=>sinonimos[s.wa_nombre]=s.producto_id);
+    online=true;syncInd('ok','☁️ Sincronizado');
+    localStorage.setItem('bp',JSON.stringify(prods));localStorage.setItem('bc',JSON.stringify(cfg));
+  }catch(e){
+    console.warn('Supabase error:',e);online=false;
+    msg.innerHTML='<span style="color:#ff6b6b">⚠️ Error: '+e.message+'</span><br><small style="color:#888">Cargando datos locales...</small>';
+    await new Promise(r=>setTimeout(r,1500));
+    const sp=localStorage.getItem('bp'),sc=localStorage.getItem('bc'),sh=localStorage.getItem('bp_historial'),ss=localStorage.getItem('bp_sin');
+    prods=sp?JSON.parse(sp):JSON.parse(JSON.stringify(INIT));
+    if(sc){cfg=JSON.parse(sc);setCfgUI()}
+    if(sh)historial=JSON.parse(sh);
+    if(ss)sinonimos=JSON.parse(ss);
+    syncInd('err','⚠️ Offline — datos locales');
+  }
+  document.getElementById('loading-overlay').classList.add('hide');
+  badges();badgeHist();renderTabla();
+}
+function guardarCfg(){
+  cfg={cotiz:parseFloat(document.getElementById('cfg-cotiz').value)||1570,rec:(parseFloat(document.getElementById('cfg-rec').value)||20)/100,ag:(parseFloat(document.getElementById('cfg-ag').value)||10)/100,min:parseFloat(document.getElementById('cfg-min').value)||75,max:parseFloat(document.getElementById('cfg-max').value)||300};
+  localStorage.setItem('bc',JSON.stringify(cfg));renderTabla();if(vista==='cli')renderCli();
+  if(online){ sPatch('config','id=eq.1',{cotiz:cfg.cotiz,recargo:cfg.rec,recargo_ag:cfg.ag,min_diff:cfg.min,max_diff:cfg.max,updated_at:new Date().toISOString()}).then(()=>syncInd('ok','☁️ Config guardada')).catch(()=>syncInd('err','⚠️ Error')); }
+  toast('Configuración guardada ✓');
+}
+function calcV(c,isAG){const r=isAG?cfg.ag:cfg.rec;const raw=Math.max(c*(1+r),c+cfg.min);const capped=cfg.max>0?Math.min(raw,c+cfg.max):raw;return Math.ceil(capped/10)*10}
+function calcA(v){return v*cfg.cotiz}
+function fu(v){return'USD $'+Math.round(v).toLocaleString('es-AR')}
+function fa(v){return'$'+Math.round(v).toLocaleString('es-AR')}
+function filtrar(c){cat=c;document.querySelectorAll('.sidebar-item').forEach(e=>e.classList.remove('active'));const el=document.getElementById('cat-'+c.replace(/ /g,'-'));if(el)el.classList.add('active');renderTabla();if(vista==='cli')renderCli();}
+function setSort(field){
+  if(field===null){sortField=null;sortDir=1}
+  else if(sortField===field){sortDir*=-1}
+  else{sortField=field;sortDir=1}
+  // Actualizar estilos botones
+  ['nom','v','c','none'].forEach(k=>{
+    const b=document.getElementById('sort-'+k);
+    if(b)b.classList.remove('active');
+  });
+  if(field==='nombre')document.getElementById('sort-nom').classList.add('active');
+  else if(field==='venta')document.getElementById('sort-v').classList.add('active');
+  else if(field==='costo')document.getElementById('sort-c').classList.add('active');
+  else document.getElementById('sort-none').classList.add('active');
+  renderTabla();
+}
+function getFiltrados(){
+  const q=(document.getElementById('busq').value||'').toLowerCase();
+  const ss=document.getElementById('chk-ss').checked;
+  let res=prods.filter(p=>{
+    if(cat!=='Todas'&&p.categoria!==cat)return false;
+    if(!ss&&p.sinStock)return false;
+    if(q&&!p.nombre.toLowerCase().includes(q)&&!p.categoria.toLowerCase().includes(q))return false;
+    return true;
+  });
+  if(sortField){
+    res=[...res].sort((a,b)=>{
+      let va,vb;
+      if(sortField==='nombre'){va=a.nombre.toLowerCase();vb=b.nombre.toLowerCase();return sortDir*(va<vb?-1:va>vb?1:0)}
+      if(sortField==='venta'){va=calcV(a.costo,a.altaGama);vb=calcV(b.costo,b.altaGama);return sortDir*(va-vb)}
+      if(sortField==='costo'){return sortDir*(a.costo-b.costo)}
+      return 0;
+    });
+  }
+  return res;
+}
+function badges(){
+  const cats=['Todas','Apple','Samsung','Otras Marcas','Xiaomi','Motorola','Varios'];
+  cats.forEach(c=>{
+    const b=document.getElementById('badge-'+c.replace(/ /g,'-'));
+    if(b)b.textContent=c==='Todas'?prods.filter(p=>!p.sinStock).length:prods.filter(p=>p.categoria===c&&!p.sinStock).length;
+  });
+}
+function renderTabla(){
+  badges();
+  const fil=getFiltrados();
+  document.getElementById('lbl-count').textContent=fil.length+' productos';
+  const tb=document.getElementById('tbody');tb.innerHTML='';
+  const cats=['Apple','Samsung','Otras Marcas','Xiaomi','Motorola','Varios'];
+  const ec={Apple:'🍎',Samsung:'📱','Otras Marcas':'🌐',Xiaomi:'🔥',Motorola:'📡',Varios:'📦'};
+  const cs=cat==='Todas'?cats:[cat];
+  let gi=0;
+  // Si hay orden activo, tabla plana (sin separadores de categoría)
+  if(sortField&&cat==='Todas'){
+    let li=0;
+    fil.forEach(p=>{li++;gi++;
+      const v=calcV(p.costo,p.altaGama),a=calcA(v),m=v-p.costo;
+      const tr=document.createElement('tr');
+      tr.className=(gi%2===0?'alt ':'')+(p.altaGama?'ag-row ':'')+(p.sinStock?'ss-row':'');
+      const ag=p.altaGama?'<span class="tag-ag">AG</span>':'';
+      const ss=p.sinStock?' <small style="color:#aaa">[Sin stock]</small>':'';
+      const catTag='<span style="font-size:10px;color:#aaa;margin-right:4px">['+esc(p.categoria)+']</span>';
+      tr.innerHTML='<td class="num">'+li+'</td><td class="nombre">'+ag+catTag+esc(p.nombre)+ss+'</td><td class="costo">'+fu(p.costo)+'</td><td class="venta">'+fu(v)+'</td><td class="ars">'+fa(a)+'</td><td class="acc"><button class="btn-wa" onclick="enviarWA('+p.id+')" title="Enviar por WhatsApp">📲</button> <button class="btn btn-gris btn-sm" onclick="abrirEditar('+p.id+')">✏️</button> <button class="btn btn-sm" style="background:#ffeaea;color:#c00" onclick="eliminar('+p.id+')">🗑</button></td>';
+      tb.appendChild(tr);
+    });
+    return;
+  }
+  cs.forEach(c=>{
+    const ps=fil.filter(p=>p.categoria===c);if(!ps.length)return;
+    const ts=document.createElement('tr');ts.className='sec-row';
+    ts.innerHTML='<td colspan="6">'+esc(ec[c]||'')+' '+esc(c.toUpperCase())+'</td>';tb.appendChild(ts);
+    let li=0;
+    ps.forEach(p=>{li++;gi++;
+      const v=calcV(p.costo,p.altaGama),a=calcA(v),m=v-p.costo;
+      const tr=document.createElement('tr');
+      tr.className=(gi%2===0?'alt ':'')+(p.altaGama?'ag-row ':'')+(p.sinStock?'ss-row':'');
+      const ag=p.altaGama?'<span class="tag-ag">AG</span>':'';
+      const ss=p.sinStock?' <small style="color:#aaa">[Sin stock]</small>':'';
+      tr.innerHTML='<td class="num">'+li+'</td><td class="nombre">'+ag+esc(p.nombre)+ss+'</td><td class="costo">'+fu(p.costo)+'</td><td class="venta">'+fu(v)+'</td><td class="ars">'+fa(a)+'</td><td class="acc"><button class="btn-wa" onclick="enviarWA('+p.id+')" title="Enviar por WhatsApp">📲</button> <button class="btn btn-gris btn-sm" onclick="abrirEditar('+p.id+')">✏️</button> <button class="btn btn-sm" style="background:#ffeaea;color:#c00" onclick="eliminar('+p.id+')">🗑</button></td>';
+      tb.appendChild(tr);
+    });
+  });
+}
+function setVista(v){
+  vista=v;
+  // Toolbar buttons
+  document.getElementById('btn-int').classList.toggle('active',v==='int');
+  document.getElementById('btn-cli').classList.toggle('active',v==='cli');
+  // Main views
+  document.getElementById('tbl-int').style.display=v==='int'?'flex':'none';
+  document.getElementById('tbl-cli').classList.toggle('show',v==='cli');
+  document.getElementById('tbl-stats').classList.toggle('show',v==='stats');
+  document.getElementById('tbl-hist').classList.toggle('show',v==='hist');
+  // Sidebar highlight
+  ['nav-stats','nav-hist'].forEach(id=>{
+    const el=document.getElementById(id); if(el)el.classList.remove('active');
+  });
+  if(v==='stats'){document.getElementById('nav-stats')?.classList.add('active');renderStats();}
+  if(v==='hist'){document.getElementById('nav-hist')?.classList.add('active');renderHistorial();}
+  if(v==='cli')renderCli();
+}
+function getProdsCliente(){
+  // Mismos filtros que la vista interna (búsqueda + categoría + sin stock)
+  const fil=getFiltrados().filter(p=>!p.sinStock);
+  return fil;
+}
+function renderCli(){
+  const hoy=new Date().toLocaleDateString('es-AR');
+  const cats=['Apple','Samsung','Otras Marcas','Xiaomi','Motorola','Varios'];
+  const ec={Apple:'🍎',Samsung:'📱','Otras Marcas':'🌐',Xiaomi:'🔥',Motorola:'📡',Varios:'📦'};
+  const fil=getProdsCliente();
+  const q=(document.getElementById('busq').value||'').trim();
+  let h='<div class="cli-header"><div><h1>BUSHIDO TECNOLOGÍA</h1><div class="sub">Lista de Precios Oficial'+(q?' · Filtro: "'+esc(q)+'"':'')+'</div></div><div class="meta">Vigente al: '+hoy+'<br>Cotización: $'+cfg.cotiz.toLocaleString('es-AR')+'<br>📲 3541 315222</div></div><div class="cli-line"></div>';
+  let hayAlgo=false;
+  cats.forEach(c=>{
+    const ps=fil.filter(p=>p.categoria===c);if(!ps.length)return;
+    hayAlgo=true;
+    h+='<div class="cli-sec">'+esc(ec[c]||'')+' '+esc(c.toUpperCase())+'</div>';
+    h+='<table class="cli-tbl"><thead><tr><th>#</th><th>Producto</th><th class="r">Precio USD</th><th class="r">Precio ARS</th></tr></thead><tbody>';
+    ps.forEach((p,i)=>{const v=calcV(p.costo,p.altaGama),a=calcA(v);h+='<tr><td style="color:#aaa;font-size:10px">'+(i+1)+'</td><td>'+esc(p.nombre)+'</td><td class="u">'+fu(v)+'</td><td class="a">'+fa(a)+'</td></tr>';});
+    h+='</tbody></table>';
+  });
+  if(!hayAlgo)h+='<div style="text-align:center;padding:40px;color:#aaa">Sin resultados para la búsqueda actual.</div>';
+  h+='<div class="cli-foot">Precios en USD al tipo de cambio del día · Sujetos a disponibilidad · Bushido Tecnología · 3541 315222</div>';
+  document.getElementById('cli-card').innerHTML=h;
+}
+function abrirNuevo(){
+  document.getElementById('modal-tit').textContent='Nuevo producto';
+  document.getElementById('f-id').value='';document.getElementById('f-cat').value='Apple';
+  document.getElementById('f-nom').value='';document.getElementById('f-costo').value='';
+  document.getElementById('f-ag').checked=false;document.getElementById('f-ss').checked=false;
+  prevCalc();document.getElementById('modal-ov').classList.add('show');
+}
+function abrirEditar(id){
+  const p=prods.find(x=>x.id===id);if(!p)return;
+  document.getElementById('modal-tit').textContent='Editar producto';
+  document.getElementById('f-id').value=p.id;document.getElementById('f-cat').value=p.categoria;
+  document.getElementById('f-nom').value=p.nombre;document.getElementById('f-costo').value=p.costo;
+  document.getElementById('f-ag').checked=p.altaGama;document.getElementById('f-ss').checked=p.sinStock;
+  prevCalc();document.getElementById('modal-ov').classList.add('show');
+}
+function cerrarModal(){document.getElementById('modal-ov').classList.remove('show')}
+function prevCalc(){
+  const c=parseFloat(document.getElementById('f-costo').value)||0;
+  const ag=document.getElementById('f-ag').checked;
+  const v=calcV(c,ag),a=calcA(v);
+  document.getElementById('pv-venta').textContent=fu(v);
+  document.getElementById('pv-ars').textContent=fa(a);
+  document.getElementById('pv-margen').textContent='+'+fu(v-c);
+}
+function guardarProd(){
+  const id=document.getElementById('f-id').value;
+  const cat2=document.getElementById('f-cat').value;
+  const nom=document.getElementById('f-nom').value.trim();
+  const cos=parseFloat(document.getElementById('f-costo').value);
+  const gar='2 meses';
+  const ag=document.getElementById('f-ag').checked;
+  const ss=document.getElementById('f-ss').checked;
+  if(!nom||!cos){toast('Completá nombre y costo');return}
+  if(id){
+    const i=prods.findIndex(x=>x.id===parseInt(id));
+    if(i>=0)prods[i]={...prods[i],categoria:cat2,nombre:nom,costo:cos,garantia:gar,altaGama:ag,sinStock:ss};
+    toast('Producto actualizado ✓');
+  }else{
+    const nid=prods.length?Math.max(...prods.map(p=>p.id))+1:1;
+    prods.push({id:nid,categoria:cat2,nombre:nom,costo:cos,garantia:gar,altaGama:ag,sinStock:ss});
+    toast('Producto agregado ✓');
+  }
+  guardarLocal();cerrarModal();renderTabla();if(vista==='cli')renderCli();
+  // Sync a Supabase
+  if(online){
+    const pSaved=id?prods.find(x=>x.id===parseInt(id)):prods[prods.length-1];
+    if(pSaved){
+      if(id){ sPatch('productos','id=eq.'+pSaved.id,mapDB(pSaved)).then(()=>syncInd('ok','☁️ Guardado')).catch(()=>syncInd('err','⚠️')); }
+      else{ sPost('productos',[mapDB(pSaved)]).then(res=>{ if(res&&res[0])pSaved.id=res[0].id; guardarLocal(); syncInd('ok','☁️ Guardado'); }).catch(e=>{ console.warn('Post error:',e); syncInd('err','⚠️ Error guardando'); }); }
+    }
+  }
+}
+function eliminar(id){
+  if(!confirm('¿Eliminar este producto?'))return;
+  const prodElim=prods.find(p=>p.id===id);
+  prods=prods.filter(p=>p.id!==id);guardarLocal();renderTabla();toast('Eliminado');
+  if(online&&prodElim){ sDelete('productos','id=eq.'+id).then(()=>syncInd('ok','☁️ Eliminado')).catch(()=>syncInd('err','⚠️')); }
+}
+function guardarLocal(){localStorage.setItem('bp',JSON.stringify(prods))}
+async function syncProds(){ if(!online)return; try{ syncInd('','⏳ Guardando...'); guardarLocal(); } catch(e){ syncInd('err','⚠️ Error sync'); } }
+function exportarJSON(){
+  const b=new Blob([JSON.stringify({config:cfg,productos:prods},null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(b);
+  a.download='bushido_precios_'+new Date().toISOString().slice(0,10)+'.json';a.click();
+  toast('Backup exportado ✓');
+}
+function importarJSON(){document.getElementById('file-imp').click()}
+function cargarJSON(e){
+  const f=e.target.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=function(ev){
+    try{
+      const d=JSON.parse(ev.target.result);
+      if(d.productos){prods=d.productos;guardarLocal()}
+      if(d.config){cfg=d.config;localStorage.setItem('bc',JSON.stringify(cfg));document.getElementById('cfg-cotiz').value=cfg.cotiz;document.getElementById('cfg-rec').value=Math.round(cfg.rec*100);document.getElementById('cfg-ag').value=Math.round(cfg.ag*100);document.getElementById('cfg-min').value=cfg.min;document.getElementById('cfg-max').value=cfg.max||300}
+      renderTabla();if(vista==='cli')renderCli();toast('Importado: '+(d.productos?.length||0)+' productos ✓');
+    }catch{toast('Error al leer el archivo')}
+  };r.readAsText(f);e.target.value='';
+}
+function toast(m){const t=document.getElementById('toast-el');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+// ── ACTUALIZADOR WHATSAPP ─────────────────────────────────────────────────────
+let sinonimos = JSON.parse(localStorage.getItem('bp_sin') || '{}');
+let diffState = { cambios:[], nuevos:[], dudosos:[], desap:[], cotiz:null };
+
+function abrirActualizador(){
+  document.getElementById('upd-overlay').classList.add('show');
+  document.getElementById('upd-paso1').style.display='block';
+  document.getElementById('upd-paso2').style.display='none';
+  document.getElementById('upd-btn-volver').style.display='none';
+  document.getElementById('upd-btn-aplicar').style.display='none';
+  document.getElementById('upd-resumen').textContent='';
+  setStep(1);
+}
+function cerrarActualizador(){document.getElementById('upd-overlay').classList.remove('show')}
+function setStep(n){
+  [1,2,3].forEach(i=>{
+    const el=document.getElementById('upd-stp'+i);
+    el.className='upd-step'+(i<n?' done':i===n?' active':'');
+  });
+}
+function volverPaso1(){
+  document.getElementById('upd-paso1').style.display='block';
+  document.getElementById('upd-paso2').style.display='none';
+  document.getElementById('upd-btn-volver').style.display='none';
+  document.getElementById('upd-btn-aplicar').style.display='none';
+  document.getElementById('upd-resumen').textContent='';
+  setStep(1);
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// MOTOR DE ACTUALIZACIÓN WA — v2 (matching inteligente por specs)
+// ══════════════════════════════════════════════════════════════════════════════
+
+// ── Parser: extrae productos del mensaje WA ───────────────────────────────────
+// El proveedor usa formato tab-separado: nombre[TAB][TAB]USD_precio[TAB]-[TAB]$ARS_precio
+function parsearMensaje(texto){
+  const res=[];
+  // Detectar cotización aparte
+  const mCotiz=texto.match(/cotizaci[oó]n[^\n]*?\$?([\d]{3,4})/i);
+  if(mCotiz)diffState.cotiz=parseInt(mCotiz[1]);
+
+  for(const linea of texto.split('\n')){
+    const l=linea.trim();
+    if(!l||l.length<3)continue;
+
+    // Saltar líneas administrativas
+    if(/^(⚫|🔹|⭐|🟢|💰|⚠️|📌)/.test(l))continue;
+    if(/atenci[oó]n comercial|recepci[oó]n de mensajes|pedidos [uú]nicamente|pedidos confirmados|aceptamos billetes|usdt sin costo|transferencia|retiros y env|reclamos de garant|buscás un producto|garantía en usados|módulos:|todos los iphone|si la faja|no retirar|sin excepción|política de cambio|antes de confirmar|una vez retirado|en caso de corresponder|equipo ser[aá] reem/i.test(l))continue;
+
+    // Dividir por tabs — formato proveedor: nombre[TABs]USD[TAB]-[TAB]$ARS
+    const partes=l.split(/\t+/);
+    if(partes.length<2)continue;
+
+    // Limpiar nombre (primera columna)
+    let nombreRaw=partes[0].trim();
+    nombreRaw=nombreRaw.replace(/^[\s▪️•·\-–—▸►◆◇★☆🔥📱🍎⭐💻🎮📡🌐📲🆕🎧🔊📺🔋💳✂️🔐📹💾🔧🧹🌿🤖🪟🎒]+/u,'').trim();
+    if(!nombreRaw||nombreRaw.length<3)continue;
+
+    // Saltar cotización
+    if(/cotizaci[oó]n/i.test(nombreRaw))continue;
+
+    const sinStockLinea=/sin\s*stock/i.test(l);
+
+    // Precio USD: buscar en columnas 1-4, el primero en rango 5-15000
+    let precioUSD=null;
+    for(let i=1;i<Math.min(partes.length,5);i++){
+      const clean=partes[i].trim().replace(/[$,\.]/g,'');
+      if(!clean||clean==='-')continue;
+      const val=parseFloat(clean);
+      if(val>=5&&val<=15000){precioUSD=val;break;}
+      if(val===0&&sinStockLinea)break; // sin stock con $0
+    }
+
+    // Sin stock con precio null o $0
+    if(sinStockLinea&&precioUSD===null){
+      let nom=nombreRaw.replace(/\s*sin\s*stock.*$/i,'').replace(/\s*ingresando.*$/i,'').trim();
+      if(nom&&nom.length>3)res.push({nombre:nom,precio:null,sinStock:true});
+      continue;
+    }
+
+    if(precioUSD===null)continue;
+
+    let nombre=nombreRaw.replace(/\s*sin\s*stock.*$/i,'').replace(/\s*ingresando.*$/i,'').trim();
+    if(!nombre||nombre.length<3)continue;
+
+    res.push({nombre,precio:precioUSD,sinStock:false});
+  }
+  return res;
+}
+
+
+// ── Motor de matching v2 ─────────────────────────────────────────────────────
+function norm(s){return s.toLowerCase().replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim()}
+
+function extraerSpecs(nombre){
+  const n=norm(nombre);
+  // Marca
+  const marcas=['iphone','samsung','xiaomi','poco','redmi','motorola','moto','huawei',
+    'infinix','realme','oppo','google','pixel','nokia','jbl','playstation','nintendo',
+    'xbox','airpods','airtag','ipad','macbook','apple','watch','ecovacs','anthbot'];
+  const marca=marcas.find(m=>n.includes(m))||'';
+  // Storage: último valor GB/TB (en "12GB 256GB" → 256GB es storage)
+  const todos_gb=[...n.matchAll(/\b(\d+)\s*(gb|tb)\b/g)].map(m=>m[1]+m[2].toUpperCase());
+  const storage=todos_gb.length>0?todos_gb[todos_gb.length-1]:'';
+  const ram=todos_gb.length>1?todos_gb[0]:'';
+  // Número de modelo: S26, A57, Note15, G17, F8, X8, C71, etc.
+  const modelos=[...n.matchAll(/\b([a-z]\d+|note\s*\d+)\b/g)].map(m=>m[1].replace(/\s/g,''));
+  // Palabras clave del modelo
+  const keywords=new Set();
+  for(const kw of['pro','max','ultra','plus','edge','air','mini','slim','fusion','power',
+    'ultra','watch','series','pro max','pro plus']) if(n.includes(kw)) keywords.add(kw);
+  return{marca,storage,ram,modelos,keywords};
+}
+
+function calcScore(waName,catName){
+  // Sinonimos guardados → máxima prioridad
+  const nw=norm(waName);
+  // Exacto normalizado
+  if(norm(catName)===nw) return 1.0;
+  const wa=extraerSpecs(waName);
+  const cat=extraerSpecs(catName);
+  // Marcas distintas = 0
+  if(wa.marca&&cat.marca&&wa.marca!==cat.marca) return 0;
+  // Storage distinto = 0 (diferente producto)
+  if(wa.storage&&cat.storage&&wa.storage!==cat.storage) return 0;
+  // RAM distinta con mismo storage = penalizar (podría ser variante)
+  let penRam=1;
+  if(wa.ram&&cat.ram&&wa.ram!==cat.ram) penRam=0.5;
+  // Números de modelo
+  let scoreModelo=0;
+  if(wa.modelos.length&&cat.modelos.length){
+    const inter=wa.modelos.filter(m=>cat.modelos.includes(m)).length;
+    const union=new Set([...wa.modelos,...cat.modelos]).size;
+    scoreModelo=inter/union;
+    if(scoreModelo===0) return 0; // modelos totalmente distintos
+  }
+  // Keywords
+  let scoreKw=0;
+  if(wa.keywords.size||cat.keywords.size){
+    const inter=[...wa.keywords].filter(k=>cat.keywords.has(k)).length;
+    const union=new Set([...wa.keywords,...cat.keywords]).size;
+    scoreKw=union>0?inter/union:1;
+  }
+  // Puntuación final
+  const base=wa.marca&&cat.marca?0.3:0.1;
+  return Math.min(1,(base + scoreModelo*0.5 + scoreKw*0.2)*penRam);
+}
+
+function matchear(wa){
+  const nw=norm(wa.nombre);
+  // 1. Sinónimos aprendidos
+  if(sinonimos[nw]){const p=prods.find(x=>x.id===sinonimos[nw]);if(p)return{tipo:'sinonimo',producto:p,score:1}}
+  // 2. Exacto normalizado
+  const ex=prods.find(p=>norm(p.nombre)===nw);
+  if(ex)return{tipo:'exacto',producto:ex,score:1};
+  // 3. Spec-based matching
+  let best=null,bs=0;
+  for(const p of prods){
+    const s=calcScore(wa.nombre,p.nombre);
+    if(s>bs){bs=s;best=p}
+  }
+  if(bs>=0.75)return{tipo:'auto',producto:best,score:bs};
+  if(bs>=0.45)return{tipo:'dudoso',producto:best,score:bs};
+  return{tipo:'nuevo',producto:null,score:0};
+}
+
+// ── Generar diff ─────────────────────────────────────────────────────────────
+function parsearYDiff(){
+  const texto=document.getElementById('upd-texto').value.trim();
+  if(!texto){toast('Pegá el mensaje primero');return}
+  const parseados=parsearMensaje(texto);
+  document.getElementById('upd-parse-status').textContent='Se detectaron '+parseados.length+' productos en el mensaje.';
+  if(!parseados.length){toast('No se detectaron productos con precio. Verificá el formato.');return}
+
+  const cambios=[],nuevos=[],dudosos=[],desap=[],sinStockExplicito=[];
+  const matchedIds=new Set();
+  diffState.cotiz=null;
+
+  for(const wa of parseados){
+    const m=matchear(wa);
+    if(m.tipo==='nuevo'){
+      // Si es sin stock con precio null → ignorar (no agregar como nuevo)
+      if(wa.precio===null) continue;
+      nuevos.push({wa});
+    }
+    else if(m.tipo==='dudoso'){
+      dudosos.push({wa,match:m});
+      if(m.producto)matchedIds.add(m.producto.id);
+    }
+    else{
+      matchedIds.add(m.producto.id);
+      // Producto reconocido con sin stock explícito → marcar sin stock
+      if(wa.precio===null&&!m.producto.sinStock){
+        sinStockExplicito.push({wa,producto:m.producto,match:m});
+      } else if(wa.precio!==null&&(wa.precio!==m.producto.costo||wa.sinStock!==m.producto.sinStock)){
+        cambios.push({wa,producto:m.producto,match:m});
+      }
+    }
+  }
+  // Desaparecidos: productos activos no encontrados en el nuevo mensaje
+  for(const p of prods){
+    if(!p.sinStock&&!matchedIds.has(p.id)){desap.push({producto:p})}
+  }
+  const activosTotales=prods.filter(p=>!p.sinStock).length;
+  const pctDesap=activosTotales>0?desap.length/activosTotales:0;
+  // Siempre mostramos los desaparecidos — pero advertimos si son muchos
+  diffState.alertaDesap = pctDesap > 0.40;
+  diffState.pctDesap = Math.round(pctDesap*100);
+
+  diffState={cambios,nuevos,dudosos,desap,sinStockExplicito,cotiz:null,alertaDesap:false,pctDesap:0};
+
+  // Re-detectar cotización
+  const texto2=texto;
+  const cm=texto2.match(/cotizaci[oó]n[^\n]*?(\d{3,5})/i)||texto2.match(/cambio[^\n]*?(\d{3,5})/i)||texto2.match(/\$\s*(\d{3,5})\s*(?:pesos|ars)/i);
+  if(cm)diffState.cotiz=parseInt(cm[1]);
+
+  renderDiff();
+}
+
+// ── Renderizar diff ──────────────────────────────────────────────────────────
+function renderDiff(){
+  const {cambios,nuevos,dudosos,desap,cotiz}=diffState;
+  const cont=document.getElementById('diff-container');
+  let h='';
+
+  // Cotización
+  if(cotiz&&cotiz!==cfg.cotiz){
+    h+=`<div class="diff-row" style="background:#e8f5e9;border-color:#a5d6a7;margin-bottom:12px">
+      <input type="checkbox" class="diff-chk" id="chk-cotiz" checked>
+      <div class="diff-nom">💱 Cotización del dólar
+        <div class="diff-sub">Actualizar cotización</div>
+      </div>
+      <span class="diff-old">$${cfg.cotiz.toLocaleString('es-AR')}</span>
+      <span style="color:#aaa">→</span>
+      <span class="diff-new">$${cotiz.toLocaleString('es-AR')}</span>
+    </div>`;
+  }
+
+  // Cambios de precio
+  if(cambios.length){
+    h+=`<div class="diff-seccion"><div class="diff-tit cambios">🟢 Cambios de precio detectados (${cambios.length})</div>`;
+    cambios.forEach((c,i)=>{
+      const subo=c.wa.precio>c.producto.costo,baj=c.wa.precio<c.producto.costo;
+      const flecha=subo?'📈':'📉';
+      const tipoTag=c.match.tipo!=='exacto'?`<span class="diff-score">${Math.round(c.match.score*100)}% match</span>`:'';
+      h+=`<div class="diff-row">
+        <input type="checkbox" class="diff-chk" id="chk-c-${i}" checked>
+        <div class="diff-nom">${flecha} ${esc(c.producto.nombre)} ${tipoTag}
+          <div class="diff-sub">WA: "${esc(c.wa.nombre)}"${c.wa.sinStock?' · <span class="sinstock-badge">SIN STOCK en nuevo mensaje</span>':''}</div>
+        </div>
+        <span class="diff-old">USD $${c.producto.costo}</span>
+        <span style="color:#aaa">→</span>
+        <span class="diff-new">USD $${c.wa.precio}</span>
+      </div>`;
+    });
+    h+='</div>';
+  }
+
+  // Dudosos
+  if(dudosos.length){
+    h+=`<div class="diff-seccion"><div class="diff-tit dudosos">🟡 Coincidencia dudosa — confirmá manualmente (${dudosos.length})</div>`;
+    dudosos.forEach((d,i)=>{
+      const pcts=Math.round(d.match.score*100);
+      h+=`<div class="diff-row" style="flex-direction:column;align-items:flex-start;gap:6px">
+        <div style="display:flex;width:100%;align-items:center;gap:8px">
+          <b style="font-size:12px">WA:</b> <span class="diff-nom">${esc(d.wa.nombre)} <span class="diff-new">→ $${d.wa.precio}</span></span>
+        </div>
+        <div class="diff-match-box">Mejor match (${pcts}%): <b>${esc(d.match.producto?.nombre||'ninguno')}</b></div>
+        <div class="diff-radio">
+          <label><input type="radio" name="dud-${i}" value="aplicar" checked> ✅ Aplicar como match</label>
+          <label><input type="radio" name="dud-${i}" value="nuevo"> 🆕 Agregar como producto nuevo</label>
+          <label><input type="radio" name="dud-${i}" value="ignorar"> ⏭ Ignorar</label>
+        </div>
+      </div>`;
+    });
+    h+='</div>';
+  }
+
+  // Nuevos
+  if(nuevos.length){
+    h+=`<div class="diff-seccion"><div class="diff-tit nuevos">🔵 Productos nuevos — asigná categoría (${nuevos.length})</div>`;
+    nuevos.forEach((n,i)=>{
+      h+=`<div class="diff-row">
+        <input type="checkbox" class="diff-chk" id="chk-n-${i}" checked>
+        <div class="diff-nom">${esc(n.wa.nombre)}
+          <div class="diff-sub">Precio: USD $${n.wa.precio}${n.wa.sinStock?' · sin stock':''}</div>
+        </div>
+        <select class="diff-cat-sel" id="cat-n-${i}">
+          <option>Apple</option><option>Samsung</option><option>Otras Marcas</option><option>Xiaomi</option><option>Motorola</option><option>Varios</option>
+        </select>
+      </div>`;
+    });
+    h+='</div>';
+  }
+
+  // Desaparecidos
+  if(desap.length){
+    const alertaHtml=diffState.alertaDesap?
+      '<div style="background:#fff3cd;border:1px solid #ffc107;border-radius:6px;padding:8px 12px;margin-bottom:10px;font-size:11px;color:#856404">'+
+      '⚠️ <b>'+diffState.pctDesap+'% del catálogo no aparece.</b> Verificá que el mensaje sea completo antes de eliminar.</div>':'';
+    h+='<div class="diff-seccion">'+alertaHtml+
+      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">'+
+      '<div class="diff-tit desap" style="margin:0">🗑 No están en la nueva lista ('+desap.length+')</div>'+
+      '<span style="display:flex;gap:6px">'+
+      '<button class="btn btn-sm" style="background:#c62828;color:white;font-size:11px;padding:4px 10px" onclick="checkTodosDesap(true)">Eliminar todos</button>'+
+      '<button class="btn btn-sm btn-gris" style="font-size:11px;padding:4px 10px" onclick="checkTodosDesap(false)">Mantener todos</button>'+
+      '</span></div>';
+    desap.forEach((d,i)=>{
+      h+='<div class="diff-row" style="align-items:center">'+
+        '<input type="checkbox" class="diff-chk chk-desap" id="chk-des-'+i+'" checked>'+
+        '<div class="diff-nom">'+esc(d.producto.nombre)+
+          '<div class="diff-sub" style="color:#c62828">No está en la nueva lista · USD $'+d.producto.costo+'</div>'+
+        '</div>'+
+        '<span style="font-size:11px;color:#c62828;white-space:nowrap;font-weight:600">🗑 Eliminar</span>'+
+      '</div>';
+    });
+    h+='</div>';
+  }
+
+  // Sin stock explícito (mencionados en el mensaje pero con precio $0)
+  if(diffState.sinStockExplicito&&diffState.sinStockExplicito.length){
+    const sse=diffState.sinStockExplicito;
+    h+='<div class="diff-seccion"><div class="diff-tit" style="background:#fff3cd;color:#856404">⏸ El proveedor los marcó sin stock ('+sse.length+')<div style="font-size:10px;font-weight:400;margin-top:2px">Están en la lista pero sin disponibilidad — se marcarán sin stock en tu catálogo</div></div>';
+    sse.forEach((e,i)=>{
+      h+='<div class="diff-row"><input type="checkbox" class="diff-chk" id="chk-sse-'+i+'" checked>'+
+        '<div class="diff-nom">'+esc(e.producto.nombre)+'<div class="diff-sub">USD $'+e.producto.costo+' — el proveedor indica sin stock</div></div>'+
+        '<span style="font-size:11px;color:#856404;font-weight:600">⏸ Sin stock</span></div>';
+    });
+    h+='</div>';
+  }
+  if(!cambios.length&&!nuevos.length&&!dudosos.length&&!desap.length&&!(diffState.sinStockExplicito&&diffState.sinStockExplicito.length)){
+    h='<div style="text-align:center;padding:40px;color:var(--gris-txt)"><div style="font-size:40px">✅</div><div style="margin-top:10px;font-weight:600">Sin diferencias detectadas</div><div style="font-size:12px;margin-top:6px">Los precios ya están actualizados.</div></div>';
+  }
+
+  cont.innerHTML=h;
+  document.getElementById('upd-paso1').style.display='none';
+  document.getElementById('upd-paso2').style.display='block';
+  document.getElementById('upd-btn-volver').style.display='inline-block';
+  document.getElementById('upd-btn-aplicar').style.display='inline-block';
+  setStep(2);
+
+  const total=cambios.length+nuevos.length+dudosos.length;
+  document.getElementById('upd-resumen').textContent=
+    `${cambios.length} cambios · ${nuevos.length} nuevos · ${dudosos.length} dudosos · ${desap.length} desaparecidos`;
+}
+
+// ── Aplicar cambios ──────────────────────────────────────────────────────────
+function aplicarCambios(){
+  const {cambios,nuevos,dudosos,desap,cotiz}=diffState;
+  let aplicados=0;
+
+  // Cotización
+  const chkCotiz=document.getElementById('chk-cotiz');
+  if(chkCotiz?.checked&&cotiz){
+    cfg.cotiz=cotiz;
+    document.getElementById('cfg-cotiz').value=cotiz;
+    localStorage.setItem('bc',JSON.stringify(cfg));
+    aplicados++;
+  }
+
+  // Cambios de precio
+  cambios.forEach((c,i)=>{
+    if(!document.getElementById('chk-c-'+i)?.checked)return;
+    const idx=prods.findIndex(p=>p.id===c.producto.id);
+    if(idx>=0){
+      const costoAntes=prods[idx].costo;
+      prods[idx].costo=c.wa.precio;
+      if(c.wa.sinStock)prods[idx].sinStock=true;
+      // Guardar sinónimo si no era exacto
+      if(c.match.tipo!=='exacto'&&c.match.tipo!=='sinonimo'){
+        sinonimos[norm(c.wa.nombre)]=c.producto.id;
+      }
+      if(costoAntes!==c.wa.precio) registrarCambio({tipo:'precio',nombre:prods[idx].nombre,categoria:prods[idx].categoria,costoAnterior:costoAntes,costoNuevo:c.wa.precio});
+      if(c.wa.sinStock) registrarCambio({tipo:'sinstock',nombre:prods[idx].nombre,categoria:prods[idx].categoria,costoAnterior:costoAntes,costoNuevo:c.wa.precio});
+      aplicados++;
+    }
+  });
+
+  // Dudosos
+  dudosos.forEach((d,i)=>{
+    const val=document.querySelector(`input[name="dud-${i}"]:checked`)?.value||'ignorar';
+    if(val==='aplicar'){
+      const idx=prods.findIndex(p=>p.id===d.match.producto?.id);
+      if(idx>=0){
+        prods[idx].costo=d.wa.precio;
+        if(d.wa.sinStock)prods[idx].sinStock=true;
+        sinonimos[norm(d.wa.nombre)]=d.match.producto.id;
+        aplicados++;
+      }
+    } else if(val==='nuevo'){
+      const cat=document.getElementById('cat-n-nuevo-'+i)?.value||'Varios';
+      const nid=prods.length?Math.max(...prods.map(p=>p.id))+1:1;
+      prods.push({id:nid,categoria:cat,nombre:d.wa.nombre,costo:d.wa.precio,garantia:'2 meses',altaGama:false,sinStock:d.wa.sinStock||false});
+      aplicados++;
+    }
+  });
+
+  // Nuevos
+  nuevos.forEach((n,i)=>{
+    if(!document.getElementById('chk-n-'+i)?.checked)return;
+    const cat=document.getElementById('cat-n-'+i)?.value||'Varios';
+    const nid=prods.length?Math.max(...prods.map(p=>p.id))+1:1;
+    prods.push({id:nid,categoria:cat,nombre:n.wa.nombre,costo:n.wa.precio,garantia:'2 meses',altaGama:false,sinStock:n.wa.sinStock||false});
+    registrarCambio({tipo:'nuevo',nombre:n.wa.nombre,categoria:cat,costoAnterior:0,costoNuevo:n.wa.precio});
+    aplicados++;
+  });
+
+  // Sin stock explícito — checkbox = marcar sin stock
+  const sse=diffState.sinStockExplicito||[];
+  sse.forEach((e,i)=>{
+    const chk=document.getElementById('chk-sse-'+i);
+    if(chk&&chk.checked){
+      const idx=prods.findIndex(p=>p.id===e.producto.id);
+      if(idx>=0){prods[idx].sinStock=true;aplicados++;}
+    }
+  });
+  // Desaparecidos — checkbox = eliminar, sin check = mantener
+  desap.forEach((d,i)=>{
+    const chk=document.getElementById('chk-des-'+i);
+    if(chk&&chk.checked){
+      registrarCambio({tipo:'eliminado',nombre:d.producto.nombre,categoria:d.producto.categoria,costoAnterior:d.producto.costo,costoNuevo:0});
+      prods=prods.filter(p=>p.id!==d.producto.id);
+      aplicados++;
+    }
+    // Si no está marcado → no hacer nada (mantener)
+  });
+
+  // Guardar
+  localStorage.setItem('bp',JSON.stringify(prods));
+  localStorage.setItem('bp_sin',JSON.stringify(sinonimos));
+  // Sync masivo a Supabase
+  if(online){ sincronizarTodo(); }
+  setStep(3);
+  document.getElementById('upd-btn-aplicar').style.display='none';
+  document.getElementById('upd-resumen').textContent=aplicados+' cambios aplicados correctamente ✓';
+  renderTabla();
+  if(vista==='cli')renderCli();
+  toast('✅ '+aplicados+' cambios aplicados');
+  setTimeout(()=>cerrarActualizador(),1800);
+}
+
+function cargarJsPDF(){
+  return new Promise((resolve,reject)=>{
+    if(window.jspdf){resolve();return;}
+    const s1=document.createElement('script');
+    s1.src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+    s1.onload=()=>{
+      const s2=document.createElement('script');
+      s2.src='https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js';
+      s2.onload=resolve;
+      s2.onerror=()=>reject(new Error('No se pudo cargar jsPDF autotable'));
+      document.head.appendChild(s2);
+    };
+    s1.onerror=()=>reject(new Error('No se pudo cargar jsPDF'));
+    document.head.appendChild(s1);
+  });
+}
+async function descargarPDF(){
+  const btn = document.getElementById('btn-pdf');
+  btn.textContent = '⏳ Cargando...';
+  btn.disabled = true;
+
+  try {
+    await cargarJsPDF();
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ orientation:'portrait', unit:'mm', format:'a4' });
+    const W = doc.internal.pageSize.getWidth();
+    const H = doc.internal.pageSize.getHeight();
+    const hoy = new Date().toLocaleDateString('es-AR');
+    const CATS = ['Apple','Samsung','Otras Marcas','Xiaomi','Motorola','Varios'];
+    const EMOJIS = {Apple:'Apple',Samsung:'Samsung','Otras Marcas':'Otras Marcas',Xiaomi:'Xiaomi',Motorola:'Motorola',Varios:'Consolas / Audio / Hogar'};
+    const NEGRO = [13,13,13];
+    const ROJO  = [192,17,26];
+    const BLANCO= [255,255,255];
+    const GRIS  = [245,245,245];
+
+    let firstPage = true;
+
+    function addHeader(){
+      // Fondo negro header
+      doc.setFillColor(...NEGRO);
+      doc.rect(0, 0, W, 28, 'F');
+      // Línea roja
+      doc.setFillColor(...ROJO);
+      doc.rect(0, 28, W, 2, 'F');
+      // Título
+      doc.setTextColor(...BLANCO);
+      doc.setFont('helvetica','bold');
+      doc.setFontSize(18);
+      doc.text('BUSHIDO TECNOLOGIA', 12, 13);
+      doc.setFont('helvetica','normal');
+      doc.setFontSize(9);
+      doc.setTextColor(192,17,26);
+      const q_pdf=(document.getElementById('busq').value||'').trim();
+    doc.text('Lista de Precios Oficial'+(q_pdf?' · Filtro: '+q_pdf:''), 12, 20);
+      // Meta derecha
+      doc.setTextColor(170,170,170);
+      doc.setFontSize(8);
+      doc.text('Vigente al: ' + hoy, W - 12, 12, {align:'right'});
+      doc.text('Cotizacion USD: $' + cfg.cotiz.toLocaleString('es-AR'), W - 12, 18, {align:'right'});
+      doc.text('Tel: 3541 315222', W - 12, 24, {align:'right'});
+      const qPDF = document.getElementById('busq').value.trim();
+      if(qPDF){ doc.setTextColor(230,100,0); doc.setFontSize(7); doc.text('Filtro: ' + qPDF, 12, 26); }
+    }
+
+    function addFooter(pageNum, total){
+      doc.setFillColor(...NEGRO);
+      doc.rect(0, H - 10, W, 10, 'F');
+      doc.setTextColor(120,120,120);
+      doc.setFontSize(7);
+      doc.setFont('helvetica','normal');
+      doc.text('Precios en USD al tipo de cambio del dia · Sujetos a disponibilidad · Bushido Tecnologia · 3541 315222', W/2, H - 4, {align:'center'});
+      doc.text('Pagina ' + pageNum + ' / ' + total, W - 10, H - 4, {align:'right'});
+    }
+
+    addHeader();
+    let yStart = 34;
+
+    CATS.forEach(cat => {
+      const fil_cli = getProdsCliente(); const prods_cat = fil_cli.filter(p => p.categoria === cat);
+      if (!prods_cat.length) return;
+
+      const rows = prods_cat.map((p, i) => {
+        const v = calcV(p.costo, p.altaGama);
+        const a = calcA(v);
+        return [
+          String(i + 1),
+          p.nombre,
+          'USD $' + v.toLocaleString('es-AR'),
+          '$' + Math.round(a).toLocaleString('es-AR')
+        ];
+      });
+
+      doc.autoTable({
+        startY: yStart,
+        head: [[{content: EMOJIS[cat] + ' · ' + cat.toUpperCase(), colSpan: 4, styles:{fillColor:ROJO, textColor:BLANCO, fontStyle:'bold', fontSize:9}}]],
+        body: rows,
+        columns: [
+          {header:'#', dataKey:0},
+          {header:'Producto', dataKey:1},
+          {header:'Precio USD', dataKey:2},
+          {header:'Precio ARS', dataKey:3},
+        ],
+        headStyles: { fillColor: NEGRO, textColor: BLANCO, fontSize: 8, fontStyle:'bold', cellPadding:3 },
+        bodyStyles: { fontSize: 8, cellPadding: 2.5, textColor: NEGRO },
+        alternateRowStyles: { fillColor: GRIS },
+        columnStyles: {
+          0: { cellWidth: 8, halign:'center', textColor:[170,170,170] },
+          1: { cellWidth:'auto', fontStyle:'bold' },
+          2: { cellWidth: 28, halign:'right', textColor: ROJO, fontStyle:'bold' },
+          3: { cellWidth: 32, halign:'right', fontStyle:'bold' },
+        },
+        didDrawPage: function(data) {
+          if (!firstPage) addHeader();
+          firstPage = false;
+          yStart = 34;
+        },
+        margin: { top: 34, bottom: 14, left: 10, right: 10 },
+        tableLineColor: [220,220,220],
+        tableLineWidth: 0.1,
+      });
+
+      yStart = doc.lastAutoTable.finalY + 6;
+    });
+
+    // Pie en todas las páginas
+    const totalPages = doc.internal.getNumberOfPages();
+    for (let i = 1; i <= totalPages; i++) {
+      doc.setPage(i);
+      addFooter(i, totalPages);
+    }
+
+    const fecha = new Date().toISOString().slice(0,10);
+    doc.save('Bushido_Lista_Clientes_' + fecha + '.pdf');
+    toast('✅ PDF descargado correctamente');
+  } catch(e) {
+    console.error(e);
+    toast('Error generando PDF. Verificá la conexión a internet.');
+  } finally {
+    btn.textContent = '📄 PDF Cliente';
+    btn.disabled = false;
+  }
+}
+
+document.getElementById('upd-overlay').addEventListener('click',e=>{if(e.target===e.currentTarget)cerrarActualizador()});
+
+
+// ── HISTORIAL ─────────────────────────────────────────────────────────────────
+let historial = JSON.parse(localStorage.getItem('bp_historial') || '[]');
+
+function guardarHistorial(){ localStorage.setItem('bp_historial', JSON.stringify(historial)); }
+function badgeHist(){ const b=document.getElementById('badge-hist'); if(b)b.textContent=historial.length; }
+
+function registrarCambio(entry){
+  const newEntry={...entry,fecha:new Date().toISOString()};
+  historial.unshift(newEntry);
+  if(historial.length>200)historial=historial.slice(0,200);
+  guardarHistorial();badgeHist();
+  if(online){ sPost('historial',[{tipo:newEntry.tipo,nombre:newEntry.nombre,categoria:newEntry.categoria,costo_anterior:newEntry.costoAnterior,costo_nuevo:newEntry.costoNuevo}]).catch(()=>{}); }
+}
+
+function tiempoRelativo(iso){
+  const diff = Date.now() - new Date(iso).getTime();
+  const min = Math.floor(diff/60000), h = Math.floor(diff/3600000), d = Math.floor(diff/86400000);
+  if(min < 1) return 'ahora mismo';
+  if(min < 60) return 'hace '+min+' min';
+  if(h < 24) return 'hace '+h+'h';
+  if(d === 1) return 'ayer';
+  return 'hace '+d+' días';
+}
+
+function renderHistorial(){
+  const cont = document.getElementById('hist-content');
+  if(!historial.length){
+    cont.innerHTML='<div class="hist-empty"><div class="ico">📋</div><div>Sin historial todavía</div><div style="font-size:12px;margin-top:6px">Los cambios de precio aparecerán acá cada vez que actualices desde WhatsApp</div></div>';
+    return;
+  }
+  // Agrupar por fecha
+  const grupos = {};
+  historial.forEach(e => {
+    const d = new Date(e.fecha).toLocaleDateString('es-AR', {weekday:'long',day:'numeric',month:'long'});
+    if(!grupos[d]) grupos[d] = [];
+    grupos[d].push(e);
+  });
+  let h = '';
+  for(const [fecha, items] of Object.entries(grupos)){
+    h += '<div class="hist-grupo"><div class="hist-fecha-hdr">'+esc(fecha)+'</div>';
+    items.forEach(e => {
+      let ico='✏️', preciosHtml='', clsNew='hist-new-up';
+      if(e.tipo==='nuevo'){ ico='🆕'; preciosHtml='<span class="hist-new-new">USD $'+e.costoNuevo+'</span>'; }
+      else if(e.tipo==='sinstock'){ ico='⚠️'; preciosHtml='<span style="color:#aaa">→ Sin stock</span>'; }
+      else if(e.tipo==='eliminado'){ ico='🗑️'; preciosHtml='<span style="color:#aaa">Eliminado</span>'; }
+      else {
+        const sube = e.costoNuevo > e.costoAnterior;
+        ico = sube ? '📈' : '📉';
+        clsNew = sube ? 'hist-new-up' : 'hist-new-dn';
+        preciosHtml = '<div class="hist-old">USD $'+e.costoAnterior+'</div><div class="'+clsNew+'">USD $'+e.costoNuevo+'</div>';
+      }
+      h += '<div class="hist-item"><div class="hist-ico">'+ico+'</div><div class="hist-nom">'+esc(e.nombre)+'<span class="hist-cat"> · '+esc(e.categoria||'')+'</span></div><div class="hist-precios">'+preciosHtml+'</div><div class="hist-tiempo">'+tiempoRelativo(e.fecha)+'</div></div>';
+    });
+    h += '</div>';
+  }
+  cont.innerHTML = h;
+}
+
+function limpiarHistorial(){
+  if(!confirm('¿Limpiar todo el historial?')) return;
+  historial = []; guardarHistorial(); badgeHist(); renderHistorial();
+  toast('Historial limpiado');
+}
+
+// ── ESTADÍSTICAS ──────────────────────────────────────────────────────────────
+function renderStats(){
+  const activos = prods.filter(p => !p.sinStock);
+  const total = activos.length;
+  const CATS = ['Apple','Samsung','Otras Marcas','Xiaomi','Motorola','Varios'];
+  const EC = {Apple:'🍎',Samsung:'📱','Otras Marcas':'🌐',Xiaomi:'🔥',Motorola:'📡',Varios:'📦'};
+
+  // Calcular márgenes
+  const margenes = activos.map(p => calcV(p.costo, p.altaGama) - p.costo);
+  const margenProm = margenes.length ? Math.round(margenes.reduce((a,b)=>a+b,0)/margenes.length) : 0;
+  const margenPromPct = activos.length ? Math.round(activos.reduce((a,p)=>{
+    const v=calcV(p.costo,p.altaGama); return a+((v-p.costo)/p.costo*100);
+  },0)/activos.length) : 0;
+
+  // Más caro / más barato
+  const sorted = [...activos].sort((a,b) => calcV(b.costo,b.altaGama) - calcV(a.costo,a.altaGama));
+  const masCaro = sorted[0], masBarato = sorted[sorted.length-1];
+
+  // Más margen / menos margen
+  const sortedM = [...activos].sort((a,b) => (calcV(b.costo,b.altaGama)-b.costo) - (calcV(a.costo,a.altaGama)-a.costo));
+  const masMargen = sortedM[0];
+
+  let h = '<div class="stats-grid">';
+  const cards = [
+    { val: total, lbl: 'Productos activos', sub: prods.filter(p=>p.sinStock).length+' sin stock' },
+    { val: 'USD $'+margenProm, lbl: 'Margen promedio', sub: margenPromPct+'% sobre el costo' },
+    { val: 'USD $'+calcV(masCaro?.costo||0,masCaro?.altaGama||false), lbl: 'Producto más caro', sub: masCaro?.nombre?.slice(0,30)||'-' },
+    { val: 'USD $'+calcV(masBarato?.costo||0,masBarato?.altaGama||false), lbl: 'Producto más barato', sub: masBarato?.nombre?.slice(0,30)||'-' },
+    { val: 'USD $'+(calcV(masMargen?.costo||0,masMargen?.altaGama||false)-(masMargen?.costo||0)), lbl: 'Mayor margen USD', sub: masMargen?.nombre?.slice(0,30)||'-' },
+    { val: historial.length, lbl: 'Cambios registrados', sub: 'en el historial' },
+  ];
+  cards.forEach(c => {
+    h += '<div class="stat-card"><div class="val">'+esc(String(c.val))+'</div><div class="lbl">'+esc(c.lbl)+'</div><div class="sub">'+esc(c.sub)+'</div></div>';
+  });
+  h += '</div>';
+
+  // Tabla por categoría
+  const maxCat = Math.max(...CATS.map(c => activos.filter(p=>p.categoria===c).length));
+  h += '<div class="stats-table-wrap"><div class="stats-table-tit">Desglose por categoría</div><table class="stats-tbl"><thead><tr><th>Categoría</th><th class="r">Productos</th><th class="r">Precio promedio</th><th class="r">Margen prom.</th><th>Distribución</th></tr></thead><tbody>';
+  CATS.forEach(cat => {
+    const ps = activos.filter(p => p.categoria === cat);
+    if(!ps.length){ h += '<tr><td>'+esc((EC[cat]||'')+' '+cat)+'</td><td class="r" colspan="4" style="color:#aaa">Sin productos activos</td></tr>'; return; }
+    const avgP = Math.round(ps.reduce((a,p)=>a+calcV(p.costo,p.altaGama),0)/ps.length);
+    const avgM = Math.round(ps.reduce((a,p)=>a+(calcV(p.costo,p.altaGama)-p.costo),0)/ps.length);
+    const barW = Math.round((ps.length/maxCat)*120);
+    h += '<tr><td>'+esc((EC[cat]||'')+' '+cat)+'</td><td class="r">'+ps.length+'</td><td class="r">USD $'+avgP.toLocaleString('es-AR')+'</td><td class="r">+USD $'+avgM+'</td><td><div class="bar-wrap"><div class="bar" style="width:'+barW+'px"></div><span style="font-size:10px;color:#aaa">'+ps.length+'</span></div></td></tr>';
+  });
+  h += '</tbody></table></div>';
+
+  // Top 5 mayor margen
+  h += '<div class="stats-table-wrap"><div class="stats-table-tit">🏆 Top 5 mayor margen USD</div><table class="stats-tbl"><thead><tr><th>#</th><th>Producto</th><th class="r">Costo</th><th class="r">Venta</th><th class="r">Margen</th></tr></thead><tbody>';
+  sortedM.slice(0,5).forEach((p,i) => {
+    const v=calcV(p.costo,p.altaGama), m=v-p.costo;
+    h += '<tr><td style="color:#aaa">'+(i+1)+'</td><td>'+esc(p.nombre)+'</td><td class="r" style="color:#aaa">$'+p.costo+'</td><td class="r" style="color:var(--rojo);font-weight:700">$'+v+'</td><td class="r" style="color:var(--verde);font-weight:700">+$'+m+'</td></tr>';
+  });
+  h += '</tbody></table></div>';
+
+  document.getElementById('stats-content').innerHTML = h;
+}
+
+// ── WHATSAPP ──────────────────────────────────────────────────────────────────
+function enviarWA(id){
+  const p = prods.find(x => x.id === id);
+  if(!p) return;
+  const v = calcV(p.costo, p.altaGama);
+  const a = Math.round(calcA(v)).toLocaleString('es-AR');
+  const msg = encodeURIComponent(
+    '¡Hola! 👋 Te paso el precio de *' + p.nombre + '*:\n' +
+    '💵 *USD $' + v.toLocaleString('es-AR') + '*\n' +
+    '💰 $' + a + ' pesos\n\n' +
+    'Cualquier consulta estoy a disposición 😊\n' +
+    '*Bushido Tecnología* 📲 3541 315222'
+  );
+  window.open('https://wa.me/?text=' + msg, '_blank');
+}
+
+// Patch aplicarCambios para registrar historial
+const _aplicarOriginal = aplicarCambios;
+// Se parchea inline abajo
+
+
+// ── MOBILE SIDEBAR ────────────────────────────────────────────────────────────
+function toggleSidebar(){
+  const sb=document.querySelector('.sidebar');
+  const ov=document.getElementById('sidebar-overlay');
+  const open=sb.classList.toggle('open');
+  ov.classList.toggle('show',open);
+}
+function cerrarSidebar(){
+  document.querySelector('.sidebar').classList.remove('open');
+  document.getElementById('sidebar-overlay').classList.remove('show');
+}
+
+// Cerrar sidebar al seleccionar categoría en mobile
+const _filtrarOrig=filtrar;
+filtrar=function(c){_filtrarOrig(c);if(window.innerWidth<=768)cerrarSidebar();}
+
+// Actualizar bottom nav highlight
+const _setVistaOrig=setVista;
+setVista=function(v){
+  _setVistaOrig(v);
+  // Bottom nav
+  ['int','cli','stats','hist'].forEach(k=>{
+    const el=document.getElementById('bnav-'+k);
+    if(el)el.classList.toggle('active',k===v);
+  });
+  // Cerrar sidebar en mobile
+  if(window.innerWidth<=768)cerrarSidebar();
+}
+
+// Badge historial en bottom nav
+const _badgeHistOrig=badgeHist;
+badgeHist=function(){
+  _badgeHistOrig();
+  const b=document.getElementById('bnav-badge-hist');
+  if(b){
+    b.textContent=historial.length;
+    b.style.display=historial.length?'block':'none';
+  }
+}
+
+
+async function sincronizarTodo(){
+  try{
+    syncInd('','⏳ Sincronizando...');
+    // Upsert todos los productos (insert or update por id)
+    const batch=prods.map(p=>({id:p.id,...mapDB(p)}));
+    const CHUNK=50;
+    for(let i=0;i<batch.length;i+=CHUNK){
+      await sUpsert('productos',batch.slice(i,i+CHUNK));
+    }
+    // Upsert sinónimos
+    const sinEntries=Object.entries(sinonimos).map(([wa,pid])=>({wa_nombre:wa,producto_id:pid}));
+    if(sinEntries.length) await sUpsert('sinonimos',sinEntries).catch(()=>{});
+    syncInd('ok','☁️ Todo sincronizado');
+  }catch(e){ syncInd('err','⚠️ Error sync: '+e.message); }
+}
+
+
+function checkTodosDesap(checked){
+  document.querySelectorAll('.chk-desap').forEach(c=>c.checked=checked);
+  toast(checked?'Todos marcados para eliminar':'Todos desmarcados — se mantendrán');
+}
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape')cerrarModal()});
+document.getElementById('modal-ov').addEventListener('click',e=>{if(e.target===e.currentTarget)cerrarModal()});
+console.log('[Bushido] Llamando init()...');
+init().catch(e=>{ document.getElementById('loading-msg').innerHTML='<span style="color:#ff6b6b">Error crítico: '+e.message+'</span>'; console.error('[Bushido] Error en init:',e); });
+</script>
+</body>
+</html>
